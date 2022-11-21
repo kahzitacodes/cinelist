@@ -1,0 +1,32 @@
+:root {
+   --dark: #010101;
+   --gray1: #DADCDF;
+   --gray2: #A9B1BD;
+   --gray3: #747C88;
+   --light: #FCFCFC;
+   --primary1: #793AFF;
+   --primary2: #793AFF;
+   --primary3: #793AFF;
+   --primary4: #793AFF;
+   --yellow: #FFB904;
+   --orange: #FF5F00
+}
+
+* {
+   box-sizing: border-box;
+}
+
+a {
+   color: var(--primary2);
+   text-decoration: none;
+}
+
+ul {
+   margin: 0;
+   padding: 0;
+}
+
+body {
+   font-family: 'Inter', sans-serif;
+   font-size: 16px;
+}
