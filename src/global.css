@@ -4,16 +4,18 @@
    --gray2: #A9B1BD;
    --gray3: #747C88;
    --light: #FCFCFC;
-   --primary1: #793AFF;
-   --primary2: #793AFF;
+   --primary1: #D4C0FF;
+   --primary2: #AD86FF;
    --primary3: #793AFF;
-   --primary4: #793AFF;
+   --primary4: #651DFF;
    --yellow: #FFB904;
    --orange: #FF5F00
 }
 
 * {
    box-sizing: border-box;
+   margin: 0;
+   padding: 0;
 }
 
 a {
@@ -21,12 +23,34 @@ a {
    text-decoration: none;
 }
 
-ul {
-   margin: 0;
-   padding: 0;
-}
-
 body {
    font-family: 'Inter', sans-serif;
    font-size: 16px;
+   line-height: 1.5;
+}
+
+.container {
+   margin: 0 auto;
+   max-width: 1250px;
+}
+
+.btn {
+   border: none;
+   border-radius: 12px;
+}
+
+.btn-md {
+   padding: 12px 20px;
+   font-size: 1.125rem;
+   font-weight: 600;
+}
+
+.btn-lg {
+   padding: 15px 30px;
+}
+
+.btn-outlined-light {
+   background: none;
+   color: var(--light);
+   border: 2px solid var(--light);
 }
