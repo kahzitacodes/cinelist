@@ -1,0 +1,48 @@
+.header {
+   background-color: var(--dark);
+   border-top: 10px solid var(--primary3);
+   display: flex;
+   flex-direction: column;
+   gap: 15px;
+   padding: 50px 0;
+}
+
+.header h1 {
+   color: var(--light);
+   font-size: 2.25rem;
+}
+
+.header .container {
+   align-items: center;
+   display: flex;
+   gap: 24px;
+}
+
+.header .col1 {
+   display: flex;
+   flex-direction: column;
+   gap: 20px;
+}
+
+.header .col2 {}
+
+.linkBack {
+   display: flex;
+   gap: 10px;
+   align-items: center;
+}
+
+.linkBack::before {
+   content: '';
+   width: 20px;
+   height: 20px;
+   background: url('../../images/arrow-left.svg');
+}
+
+.header p {
+   color: var(--light);
+}
+
+.headerDescription {
+   font-size: 1.25rem;
+}
