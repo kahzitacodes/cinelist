@@ -1,7 +1,9 @@
+import './global.css';
+
 function App() {
   return (
     <div className="App">
-      Oi CineList Project ! 
+      Oi CineList Project !
     </div>
   );
 }
