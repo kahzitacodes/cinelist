@@ -1,0 +1,35 @@
+
+.div {
+
+     background-color:#1d2433;
+     margin: 100px;
+     border-radius: 10px;
+     height: 150px;
+     
+     
+
+}
+
+.title {
+
+    color:white;
+    font-size: 1rem;
+    padding-top: 30px;
+    margin-top: -40px;
+    margin-left: 40px;
+   
+   
+}
+
+
+
+.button {
+    
+    background:#793AFF;
+    font-size: 1rem;
+    padding: 10px;
+    border-radius: 10px;
+    margin-left: 40px;
+    margin-top: 10px;
+
+}
