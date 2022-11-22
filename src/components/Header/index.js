@@ -5,22 +5,30 @@ import iconPencil from "../../images/edit.svg";
 
 export function Header(props) {
 
-   const { listTitle, listDescription, listAutor } = props;
+   const { headerType, headerTitle, listDescription, listAutor } = props;
 
    return (
       <header className={style.header}>
          <div className={`container ${style.container}`}>
             <div className={style.col1}>
                <Link className={style.linkBack} to="/">Voltar</Link>
-               <h1>{listTitle}</h1>
-               <p className={style.headerDescription}>
-                  {listDescription}
-               </p>
-               <p>por {listAutor}</p>
+               <h1>{headerTitle}</h1>
+               {listDescription ?
+                  <p className={style.headerDescription}>
+                     {listDescription}
+                  </p>
+                  : null
+               }
+
+               {listAutor ? (<p>por {listAutor}</p>) : null}
+
             </div>
-            <div className={style.col2}>
-               <ButtonIcon icon={iconPencil} label="Editar" btnSize="btn-md" btnStyle="btn-outlined-light" />
-            </div>
+            {headerType === 'list' ?
+               <div className={style.col2}>
+                  <ButtonIcon icon={iconPencil} label="Editar" btnSize="btn-md" btnStyle="btn-outlined-light" />
+               </div>
+               : null
+            }
          </div>
       </header>
    );
