@@ -1,7 +1,8 @@
 import './global.css';
-import{Routes, Route} from 'react-router-dom';
-import {Home} from'./Pages/Home';
-// import qualquer coisa para testar, andre
+import { Routes, Route } from 'react-router-dom';
+import { Home } from './pages/Home';
+import { CreateList } from './pages/CreateList';
+
 
 
 function App() {
@@ -11,11 +12,12 @@ function App() {
     <div className="App">
 
 
-        <Routes>
+      <Routes>
 
-          <Route path='/' element={<Home/>} />
-          
-        </Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/create' element={<CreateList />} />
+
+      </Routes>
 
 
     </div>

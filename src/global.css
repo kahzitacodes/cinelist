@@ -31,7 +31,7 @@ body {
 
 .container {
    margin: 0 auto;
-   max-width: 1250px;
+   width: 1250px;
 }
 
 .btn {
