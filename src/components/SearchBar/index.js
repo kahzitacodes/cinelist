@@ -3,7 +3,9 @@ import axios from "axios";
 import debounce from "lodash.debounce";
 import style from "./style.module.css";
 
+
 export function SearchBar(props) {
+<<<<<<< HEAD
   const [searchInput, setSearchInput] = useState("");
   const [movies, setMovies] = useState([]);
   const [moviesToAdd, setMoviesToAdd] = useState([]);
@@ -12,6 +14,17 @@ export function SearchBar(props) {
   console.log(movies);
   console.log("Total de " + moviesToAdd.length);
   console.log(moviesToAdd);
+=======
+   const { addMovieAction, removeMovieAction, moviesToDisplay } = props;
+   const [searchInput, setSearchInput] = useState("");
+   const [movies, setMovies] = useState([]);
+  // const [moviesToAdd, setMoviesToAdd] = useState([]);
+   const [open, setOpen] = useState(false);
+   const [toggleButton, setToggleButton] = useState(true);
+
+
+
+>>>>>>> 007cd9e634fb460898173c818c72783d2ba3bc4c
 
   const apiKey = "24e1069de660c324728bbf37a36d24bd";
 
@@ -30,6 +43,7 @@ export function SearchBar(props) {
     return debounce(handleSearch, 300);
   }, []);
 
+<<<<<<< HEAD
   const addMovie = (movie) => {
     setMoviesToAdd([...moviesToAdd, movie]);
     setOpen(false);
@@ -42,6 +56,30 @@ export function SearchBar(props) {
     );
     setMoviesToAdd(filteredMovies);
   };
+=======
+   const handleButtonChange = () => {
+         setToggleButton(!toggleButton)
+   }
+
+   const addMovie = (movie) => {
+     // setMoviesToAdd([...moviesToAdd, movie]);
+     addMovieAction(movie)
+
+      handleButtonChange()
+      
+
+      setOpen(false);
+      setSearchInput("");
+   };
+
+   // const removeMovie = (movieId) => {
+   //    const filteredMovies = moviesToAdd.filter((currentElement) => currentElement.id !== movieId);
+   //    handleButtonChange();
+   //    setMoviesToAdd(filteredMovies);
+   // };
+
+
+>>>>>>> 007cd9e634fb460898173c818c72783d2ba3bc4c
 
   // Search on type
   useEffect(() => {
@@ -52,11 +90,27 @@ export function SearchBar(props) {
         }
         let endpoint = `https://api.themoviedb.org/3/search/movie?query=${searchInput}&api_key=${apiKey}&language=pt-BR&page=1&include_adult=false`;
 
+<<<<<<< HEAD
         let response = await axios.get(endpoint);
         setMovies(response.data.results);
         setOpen(true);
       } catch (error) {
         console.log();
+=======
+         try {
+            if (!searchInput) {
+               return;
+            }
+
+            let response = await axios.get(`https://api.themoviedb.org/3/search/movie?query=${searchInput}&api_key=${apiKey}&language=pt-BR&page=1&include_adult=false`);
+
+            setMovies(response.data.results);
+            setOpen(true);
+
+         } catch (error) {
+            console.log();
+         }
+>>>>>>> 007cd9e634fb460898173c818c72783d2ba3bc4c
       }
     }
     fetchMovies();
@@ -124,6 +178,7 @@ export function SearchBar(props) {
                       +{" "}
                     </button>
 
+<<<<<<< HEAD
                     <button
                       type="button"
                       onClick={() => removeMovie(currentElement.id)}
@@ -184,3 +239,69 @@ export function SearchBar(props) {
     </>
   );
 }
+=======
+            {/* dropdown that display search results in a list */}
+            {!open ? null :
+               (
+                  <div className={style.dropdown}>
+
+                     <ul className={style.dropdownUl}>
+                        {movies.map((currentElement) => {
+
+                           return (
+                              <li className={style.dropdownLi} key={currentElement.id}>
+
+                                 <strong>{currentElement.title} </strong>
+
+                                 {/* {toggleButton ?
+                                    <button className={style.toggleOne} type="button" onClick={() => {
+
+                                       moviesToAdd.includes(currentElement) ? removeMovie(currentElement) : addMovie(currentElement)
+
+                                    //addMovie(currentElement)
+                                    //handleButtonChange(currentElement)
+                                    
+                                       console.log(currentElement.id)
+                                    }}> + </button> 
+                                  : <button className={style.toggleTwo} type="button" onClick={() => {
+
+                                  //removeMovie(currentElement.id)
+                                  
+
+                                    }}> - </button>} */}
+                                    <button className={moviesToDisplay.includes(currentElement) ? style.toggleTwo : style.toggleOne} type="button" onClick={() => {
+
+                                    moviesToDisplay.includes(currentElement) ? removeMovieAction(currentElement.id) : addMovie(currentElement)
+
+                                    }}> + </button> 
+                                 
+                              </li>
+                           );
+                        })}
+                     </ul>
+                  </div>
+               )}
+
+            {/* display cards added to array/form */}
+            <div style={{ marginTop: 20, display: "flex", gap: 24, flexDirection: "column" }}>
+               {moviesToDisplay.map((addedMovie) => {
+                  return (
+                     <div key={addedMovie.id} style={{
+                        display: "flex", position: "relative", border: "1px solid #dddd", borderRadius: "15px", overflow: "hidden"
+                     }}>
+                        <button style={{ position: "absolute", top: 10, right: 10 }} type="button">✅</button>
+                        <img height={241} src={`https://image.tmdb.org/t/p/w500/${addedMovie.poster_path}`} alt={addedMovie.title} />
+                        <div style={{ padding: 16 }}>
+                           <h3>{addedMovie.title}</h3>
+                           <p>{new Date(addedMovie.release_date).getFullYear()}</p>
+                           <p>{addedMovie.overview}</p>
+                        </div>
+                     </div>
+                  );
+               })}
+            </div>
+         </div>
+      </>
+   );
+}
+>>>>>>> 007cd9e634fb460898173c818c72783d2ba3bc4c

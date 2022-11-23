@@ -18,16 +18,42 @@ export function CreateList() {
     listMovies: [],
   });
 
+<<<<<<< HEAD
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
   }
+=======
+   const [moviesToAdd, setMoviesToAdd] = useState([]);
+
+   const [form, setForm] = useState({
+      name: "",
+      listTitle: "",
+      listDescription: "",
+      listMovies: []
+   });
+>>>>>>> 007cd9e634fb460898173c818c72783d2ba3bc4c
 
   async function handleSubmit(e) {
     e.preventDefault();
 
+<<<<<<< HEAD
     try {
       const response = await axios.post(urlAPI, form);
       // toast.success("Sua lista foi criada com sucesso!");
+=======
+   const addMovie = (movie) => {
+      setMoviesToAdd([...moviesToAdd, movie]);
+      setForm({ ...form, listMovies: [...moviesToAdd, movie] });
+   };
+
+   const removeMovie = (movieId) => {
+      const filteredMovies = moviesToAdd.filter((currentElement) => currentElement.id !== movieId);
+      setMoviesToAdd(filteredMovies);
+   };
+
+   async function handleSubmit(e) {
+      e.preventDefault();
+>>>>>>> 007cd9e634fb460898173c818c72783d2ba3bc4c
 
       navigate("/");
       console.log("response: " + response);
@@ -48,6 +74,7 @@ export function CreateList() {
           <form>
             <h2> Informações da lista </h2>
 
+<<<<<<< HEAD
             <div className="form-group">
               <div className="form-control">
                 <label htmlFor="input-nome">Seu nome</label>
@@ -82,6 +109,59 @@ export function CreateList() {
                   onChange={handleChange}
                 ></textarea>
               </div>
+=======
+   return (
+      <>
+         <Header headerType="default" headerTitle="Crie sua própria lista de recomendações" />
+
+         <main className="main">
+            <div className={style.container}>
+               <form onSubmit={handleSubmit}>
+
+                  <h2> Informações da lista </h2>
+
+                  <div className="form-group">
+                     <div className="form-control">
+                        <label htmlFor="input-nome">Seu nome</label>
+                        <input
+                           className="form-item"
+                           id="input-name"
+                           type="text"
+                           name="name"
+                           onChange={handleChange}
+                        />
+                     </div>
+                     <div className="form-control">
+                        <label htmlFor="input-list-title">Título da sua lista</label>
+                        <input
+                           className="form-item"
+                           id="input-list-title"
+                           type="text"
+                           name="listTitle"
+                           onChange={handleChange}
+                        />
+                     </div>
+                     <div className="form-control">
+                        <label htmlFor="input-list-description">Breve descrição da sua lista</label>
+                        <textarea
+                           className="form-item"
+                           rows="4"
+                           id="input-list-description"
+                           type="text"
+                           name="listDescription"
+                           onChange={handleChange}
+                        ></textarea>
+                     </div>
+                  </div>
+
+                  <SearchBar addMovieAction={addMovie} removeMovieAction={removeMovie} moviesToDisplay={form.listMovies} />
+
+                  <div className="form-actions">
+                     <Link to="/">Cancelar</Link>
+                     <button className="btn btn-lg btn-primary">Criar lista</button>
+                  </div>
+               </form>
+>>>>>>> 007cd9e634fb460898173c818c72783d2ba3bc4c
             </div>
 
             <SearchBar />

@@ -1,3 +1,43 @@
 .dropdown {
+<<<<<<< HEAD
   overflow-y: scroll;
 }
+=======
+   overflow-y: scroll;
+   margin-bottom: 30;
+   height: 360;
+   background: white;
+   top: 75px;
+   width: 100%;
+   position: absolute;
+   box-shadow: 0px 1px 20px rgba(16, 24, 40, 0.25);
+   border-radius: 8px;
+   padding: 12px;
+   z-index: 9999;
+}
+
+.dropdownUl {
+   display: flex;
+   flex-direction: column; 
+   padding: 5px 0;
+}
+
+.dropdownLi {
+   padding: 15px 0;
+   border-bottom: 1px solid #dddddd;
+   display: flex;
+   justify-content: space-between;
+}
+
+.toggleOne{
+   width: 35;
+   background-color: green;
+   color: white;
+}
+
+.toggleTwo{
+   width: 35;
+   background-color: red;
+   color: white;
+}
+>>>>>>> 007cd9e634fb460898173c818c72783d2ba3bc4c
