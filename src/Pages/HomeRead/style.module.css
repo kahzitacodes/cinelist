@@ -1,14 +1,13 @@
 
-
-
 .container{
     flex-wrap: wrap;
     overflow: hidden;
     position: relative;
-    display: flex;
+    /* display: flex; */
     border: solid black;
     margin: 100px;
-    height: 800px
+    height: 1000px;
+    padding:50px;
     
 }
 
