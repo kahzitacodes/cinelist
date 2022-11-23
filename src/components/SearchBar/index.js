@@ -3,16 +3,17 @@ import axios from 'axios';
 import debounce from "lodash.debounce";
 import style from "./style.module.css";
 
+
 export function SearchBar(props) {
+   const { addMovieAction, removeMovieAction, moviesToDisplay } = props;
    const [searchInput, setSearchInput] = useState("");
    const [movies, setMovies] = useState([]);
-   const [moviesToAdd, setMoviesToAdd] = useState([]);
+  // const [moviesToAdd, setMoviesToAdd] = useState([]);
    const [open, setOpen] = useState(false);
    const [toggleButton, setToggleButton] = useState(true);
 
-   console.log(movies);
-   console.log('Total de ' + moviesToAdd.length);
-   console.log(moviesToAdd);
+
+
 
    const apiKey = "24e1069de660c324728bbf37a36d24bd";
 
@@ -36,7 +37,9 @@ export function SearchBar(props) {
    }
 
    const addMovie = (movie) => {
-      setMoviesToAdd([...moviesToAdd, movie]);
+     // setMoviesToAdd([...moviesToAdd, movie]);
+     addMovieAction(movie)
+
       handleButtonChange()
       
 
@@ -44,11 +47,13 @@ export function SearchBar(props) {
       setSearchInput("");
    };
 
-   const removeMovie = (movieId) => {
-      const filteredMovies = moviesToAdd.filter((currentElement) => currentElement.id !== movieId);
-      handleButtonChange();
-      setMoviesToAdd(filteredMovies);
-   };
+   // const removeMovie = (movieId) => {
+   //    const filteredMovies = moviesToAdd.filter((currentElement) => currentElement.id !== movieId);
+   //    handleButtonChange();
+   //    setMoviesToAdd(filteredMovies);
+   // };
+
+
 
    // Search on type
    useEffect(() => {
@@ -116,9 +121,9 @@ export function SearchBar(props) {
                                   
 
                                     }}> - </button>} */}
-                                    <button className={moviesToAdd.includes(currentElement) ? style.toggleTwo : style.toggleOne} type="button" onClick={() => {
+                                    <button className={moviesToDisplay.includes(currentElement) ? style.toggleTwo : style.toggleOne} type="button" onClick={() => {
 
-                                    moviesToAdd.includes(currentElement) ? removeMovie(currentElement) : addMovie(currentElement)
+                                    moviesToDisplay.includes(currentElement) ? removeMovieAction(currentElement.id) : addMovie(currentElement)
 
                                     }}> + </button> 
                                  
@@ -131,7 +136,7 @@ export function SearchBar(props) {
 
             {/* display cards added to array/form */}
             <div style={{ marginTop: 20, display: "flex", gap: 24, flexDirection: "column" }}>
-               {moviesToAdd.map((addedMovie) => {
+               {moviesToDisplay.map((addedMovie) => {
                   return (
                      <div key={addedMovie.id} style={{
                         display: "flex", position: "relative", border: "1px solid #dddd", borderRadius: "15px", overflow: "hidden"
