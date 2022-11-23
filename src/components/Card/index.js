@@ -10,7 +10,7 @@ export function Card(props) {
     <div className={style.container}>
 
       
-      <Link to={`/${props.id}`}>
+      <Link to={'/create'}>
           <img className={style.img} src={props.img} alt="foto" />
       </Link>
 
@@ -19,7 +19,7 @@ export function Card(props) {
           <h2 className={style.nameList}>{props.nameList}</h2>
       </Link>
 
-      <h3 className={style.director}>{props.director}</h3>
+      <p className={style.director}>{props.director}</p>
     </div>
   );
 }
