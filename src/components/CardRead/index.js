@@ -1,7 +1,7 @@
 import style from "./style.module.css";
 import { Link } from "react-router-dom";
 
-export function Card(props) {
+export function CardRead(props) {
   return (
 
 

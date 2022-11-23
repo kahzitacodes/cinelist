@@ -2,9 +2,8 @@ import { Card } from "../../components/Card";
 import { Link } from "react-router-dom";
 import { HeaderFirst } from "../../components/HeaderFirst";
 import {Footer} from '../../components/Footer';
-import itImg from '../../images/it.jpg';
-import capa from '../../images/imgTop.png';
-import capa1 from'../../images/imgTop1.png';
+import {list} from '../../data';
+import style from "./style.module.css";
 
 const filmes = [
   { name: "harry" },
@@ -15,20 +14,24 @@ const filmes = [
 
 export function Home(props) {
   return (
+
+
+    
 <div>
 
     <HeaderFirst  title="Compartilhe seus filmes e séries favoritos!"
       text="Acesse listas de recomendações e também compartilhe seus filmes e sériesfavotiros" />
 
+     
+      <div className={style.container}>
 
-      <Card nameList='Nome da recomendação' director=' Diretor:' img={itImg}/>
+        {list.slice(0, 8).map((filme) => (
+          <Card  nameList={filme.title} director={filme.autor} img={filme.image} id={filme._id}/>
+        ))}
+        
+      </div>
 
-
-      <Footer/>
-   
-      {filmes.map((filme) => (
-        <p>{filme.name}</p>
-      ))}
+     <Footer title='Crie listas com suas séries e filmes e compartilhe!' />
 
       
     </div>

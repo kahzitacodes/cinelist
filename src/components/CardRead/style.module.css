@@ -1,12 +1,15 @@
 .container { 
 
-    width: 300px;
+    width: 1000px;
     height: 200px;
-    margin: 40px;
+    margin: 10px;
     margin-left: 30px;
     margin-right: 15px;
-    /* border: solid black; */
+    margin-bottom: 60px;
+    border: solid black;
     padding: 10px;
+    overflow: hidden;
+    display: flex;
 }
 
 
@@ -24,6 +27,7 @@ font-size: 0.9rem;
 
 .img {
 
-    width: 200px;
+    width: 120px;
     border-radius: 15px;
+    margin: 5px;
 }  

@@ -1,10 +1,13 @@
 
 .div {
 
-     background-color:#1d2433;
+   
      margin: 100px;
      border-radius: 10px;
      height: 150px;
+     background-image: url('../../images/imgTop1.png');
+     background-size: cover;
+
      
      
 

@@ -1,18 +1,18 @@
 import style from "./style.module.css";
+import {Link}  from 'react-router-dom'
 
 export function Footer(props) {
   return (
+
+
     <div className={style.div}>
 
-     <img src={props.img} alt='Foto'/>
-     
-      <h1 className={style.title}>
-        Crie listas com suas séries <br /> e filmes e compartilhe!
-      </h1>
+      <h1 className={style.title}>{props.title}</h1>
 
-      {/* <Link to='/teste'> */}
-      <button className={style.button}>Crie uma lista</button>
-      {/* </Link> */}
+      <Link to='/teste'>
+        <button className={style.button}>Crie uma lista</button>
+      </Link>
+
     </div>
   );
 }
