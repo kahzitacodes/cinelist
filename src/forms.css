@@ -22,6 +22,7 @@
 }
 
 .form-item {
+   font-family: 'Inter', sans-serif;
    background-color: white;
    border: 1px solid var(--gray2);
    border-radius: 8px;
