@@ -39,6 +39,18 @@ export function CreateList() {
       e.preventDefault();
 
       try {
+         if (form.listMovies.length === 0) {
+            toast(
+               (t) => (
+                  <div className="toast-content">
+                     <span>Adicione um filme na sua lista!</span>
+                     <button className="btn btn-primary btn-sm" onClick={() => toast.dismiss(t.id)}>
+                        Entendi
+                     </button>
+                  </div>
+               ));
+            return;
+         }
          const response = await axios.post(urlAPI, form);
          toast.success("Sua lista foi criada com sucesso!");
 
@@ -64,6 +76,7 @@ export function CreateList() {
                      <div className="form-control">
                         <label htmlFor="input-nome">Seu nome</label>
                         <input
+                           required
                            className="form-item"
                            id="input-name"
                            type="text"
@@ -74,6 +87,7 @@ export function CreateList() {
                      <div className="form-control">
                         <label htmlFor="input-list-title">Título da sua lista</label>
                         <input
+                           required
                            className="form-item"
                            id="input-list-title"
                            type="text"
@@ -84,6 +98,7 @@ export function CreateList() {
                      <div className="form-control">
                         <label htmlFor="input-list-description">Breve descrição da sua lista</label>
                         <textarea
+                           required
                            className="form-item"
                            rows="4"
                            id="input-list-description"
