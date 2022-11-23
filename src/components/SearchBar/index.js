@@ -3,15 +3,17 @@ import axios from 'axios';
 import debounce from "lodash.debounce";
 import style from "./style.module.css";
 
+
 export function SearchBar(props) {
+   const { addMovieAction, removeMovieAction, moviesToDisplay } = props;
    const [searchInput, setSearchInput] = useState("");
    const [movies, setMovies] = useState([]);
-   const [moviesToAdd, setMoviesToAdd] = useState([]);
+  // const [moviesToAdd, setMoviesToAdd] = useState([]);
    const [open, setOpen] = useState(false);
+   const [toggleButton, setToggleButton] = useState(true);
 
-   console.log(movies);
-   console.log('Total de ' + moviesToAdd.length);
-   console.log(moviesToAdd);
+
+
 
    const apiKey = "24e1069de660c324728bbf37a36d24bd";
 
@@ -30,16 +32,28 @@ export function SearchBar(props) {
       return debounce(handleSearch, 300);
    }, []);
 
+   const handleButtonChange = () => {
+         setToggleButton(!toggleButton)
+   }
+
    const addMovie = (movie) => {
-      setMoviesToAdd([...moviesToAdd, movie]);
+     // setMoviesToAdd([...moviesToAdd, movie]);
+     addMovieAction(movie)
+
+      handleButtonChange()
+      
+
       setOpen(false);
       setSearchInput("");
    };
 
-   const removeMovie = (movieId) => {
-      const filteredMovies = moviesToAdd.filter((currentElement) => currentElement.id !== movieId);
-      setMoviesToAdd(filteredMovies);
-   };
+   // const removeMovie = (movieId) => {
+   //    const filteredMovies = moviesToAdd.filter((currentElement) => currentElement.id !== movieId);
+   //    handleButtonChange();
+   //    setMoviesToAdd(filteredMovies);
+   // };
+
+
 
    // Search on type
    useEffect(() => {
@@ -49,11 +63,12 @@ export function SearchBar(props) {
             if (!searchInput) {
                return;
             }
-            let endpoint = `https://api.themoviedb.org/3/search/movie?query=${searchInput}&api_key=${apiKey}&language=pt-BR&page=1&include_adult=false`;
 
-            let response = await axios.get(endpoint);
+            let response = await axios.get(`https://api.themoviedb.org/3/search/movie?query=${searchInput}&api_key=${apiKey}&language=pt-BR&page=1&include_adult=false`);
+
             setMovies(response.data.results);
             setOpen(true);
+
          } catch (error) {
             console.log();
          }
@@ -80,19 +95,38 @@ export function SearchBar(props) {
             {/* dropdown that display search results in a list */}
             {!open ? null :
                (
-                  <div className={style.dropdown} style={{ marginBottom: 30, height: 360, overflow: "scrool", background: "white", top: "75px", width: "100%", position: "absolute", boxShadow: "0px 1px 20px rgba(16, 24, 40, 0.25)", borderRadius: "8px", padding: "12px", zIndex: 9999 }}>
+                  <div className={style.dropdown}>
 
-                     <ul style={{ display: "flex", flexDirection: "column", padding: "5px 0" }}>
+                     <ul className={style.dropdownUl}>
                         {movies.map((currentElement) => {
 
                            return (
-                              <li key={currentElement.id} style={{ padding: "15px 0", borderBottom: "1px solid #dddddd", display: "flex", justifyContent: "space-between" }}>
+                              <li className={style.dropdownLi} key={currentElement.id}>
 
                                  <strong>{currentElement.title} </strong>
 
-                                 <button className={style.toggle} type="button" onClick={() => addMovie(currentElement)} style={{ width: 35 }}> + </button>
+                                 {/* {toggleButton ?
+                                    <button className={style.toggleOne} type="button" onClick={() => {
 
-                                 <button type="button" onClick={() => removeMovie(currentElement.id)} style={{ width: 35 }}> - </button>
+                                       moviesToAdd.includes(currentElement) ? removeMovie(currentElement) : addMovie(currentElement)
+
+                                    //addMovie(currentElement)
+                                    //handleButtonChange(currentElement)
+                                    
+                                       console.log(currentElement.id)
+                                    }}> + </button> 
+                                  : <button className={style.toggleTwo} type="button" onClick={() => {
+
+                                  //removeMovie(currentElement.id)
+                                  
+
+                                    }}> - </button>} */}
+                                    <button className={moviesToDisplay.includes(currentElement) ? style.toggleTwo : style.toggleOne} type="button" onClick={() => {
+
+                                    moviesToDisplay.includes(currentElement) ? removeMovieAction(currentElement.id) : addMovie(currentElement)
+
+                                    }}> + </button> 
+                                 
                               </li>
                            );
                         })}
@@ -102,7 +136,7 @@ export function SearchBar(props) {
 
             {/* display cards added to array/form */}
             <div style={{ marginTop: 20, display: "flex", gap: 24, flexDirection: "column" }}>
-               {moviesToAdd.map((addedMovie) => {
+               {moviesToDisplay.map((addedMovie) => {
                   return (
                      <div key={addedMovie.id} style={{
                         display: "flex", position: "relative", border: "1px solid #dddd", borderRadius: "15px", overflow: "hidden"
@@ -118,7 +152,7 @@ export function SearchBar(props) {
                   );
                })}
             </div>
-         </div >
+         </div>
       </>
    );
 }
