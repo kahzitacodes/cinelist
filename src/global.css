@@ -1,86 +1,86 @@
 :root {
-   --dark: #010101;
-   --gray1: #DADCDF;
-   --gray2: #A9B1BD;
-   --gray3: #747C88;
-   --light: #FCFCFC;
-   --primary1: #D4C0FF;
-   --primary2: #AD86FF;
-   --primary3: #793AFF;
-   --primary4: #651DFF;
-   --yellow: #FFB904;
-   --orange: #FF5F00
+  --dark: #010101;
+  --gray1: #dadcdf;
+  --gray2: #a9b1bd;
+  --gray3: #747c88;
+  --light: #fcfcfc;
+  --primary1: #d4c0ff;
+  --primary2: #ad86ff;
+  --primary3: #793aff;
+  --primary4: #651dff;
+  --yellow: #ffb904;
+  --orange: #ff5f00;
 }
 
 * {
-   box-sizing: border-box;
-   margin: 0;
-   padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 a {
-   color: var(--primary2);
-   text-decoration: none;
+  color: var(--primary2);
+  text-decoration: none;
 }
 
 a:hover {
-   color: var(--primary3);
+  color: var(--primary3);
 }
 
 ul {
-   list-style: none;
+  list-style: none;
 }
 
 body {
-   font-family: 'Inter', sans-serif;
-   font-size: 16px;
-   line-height: 1.5;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
 }
 
 h2 {
-   font-size: 1.5rem;
-   margin-bottom: 20px;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
 }
 
 .container {
-   margin: 0 auto;
-   width: 1250px;
+  margin: 0 auto;
+  width: 1250px;
 }
 
 .btn {
-   border: none;
-   border-radius: 12px;
-   cursor: pointer;
-   transition: background-color .15s ease-in-out
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.15s ease-in-out;
 }
 
 .btn-md {
-   padding: 12px 20px;
-   font-size: 1.125rem;
-   font-weight: 600;
+  padding: 12px 20px;
+  font-size: 1.125rem;
+  font-weight: 600;
 }
 
 .btn-lg {
-   padding: 15px 30px;
-   font-size: 1.25rem;
-   font-weight: 600;
+  padding: 15px 30px;
+  font-size: 1.25rem;
+  font-weight: 600;
 }
 
 .btn-primary {
-   color: white;
-   background-color: var(--primary3);
+  color: white;
+  background-color: var(--primary3);
 }
 
 .btn-primary:hover {
-   background-color: var(--primary4);
+  background-color: var(--primary4);
 }
 
 .btn-outlined-light {
-   background: none;
-   color: var(--light);
-   border: 2px solid var(--light);
+  background: none;
+  color: var(--light);
+  border: 2px solid var(--light);
 }
 
 .main {
-   margin-top: 60px;
+  margin-top: 60px;
 }
