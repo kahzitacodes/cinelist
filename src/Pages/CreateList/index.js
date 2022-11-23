@@ -12,6 +12,8 @@ export function CreateList() {
    const navigate = useNavigate();
    const urlAPI = "https://ironrest.cyclic.app/testeProjeto2";
 
+   const [moviesToAdd, setMoviesToAdd] = useState([]);
+
    const [form, setForm] = useState({
       name: "",
       listTitle: "",
@@ -22,6 +24,16 @@ export function CreateList() {
    function handleChange(e) {
       setForm({ ...form, [e.target.name]: e.target.value });
    }
+
+   const addMovie = (movie) => {
+      setMoviesToAdd([...moviesToAdd, movie]);
+      setForm({ ...form, listMovies: [...moviesToAdd, movie] });
+   };
+
+   const removeMovie = (movieId) => {
+      const filteredMovies = moviesToAdd.filter((currentElement) => currentElement.id !== movieId);
+      setMoviesToAdd(filteredMovies);
+   };
 
    async function handleSubmit(e) {
       e.preventDefault();
@@ -41,9 +53,10 @@ export function CreateList() {
    return (
       <>
          <Header headerType="default" headerTitle="Crie sua própria lista de recomendações" />
+
          <main className="main">
             <div className={style.container}>
-               <form>
+               <form onSubmit={handleSubmit}>
 
                   <h2> Informações da lista </h2>
 
@@ -81,11 +94,11 @@ export function CreateList() {
                      </div>
                   </div>
 
-                  <SearchBar />
+                  <SearchBar addMovieAction={addMovie} removeMovieAction={removeMovie} moviesToDisplay={form.listMovies} />
 
                   <div className="form-actions">
                      <Link to="/">Cancelar</Link>
-                     <button onSubmit={handleSubmit} className="btn btn-lg btn-primary">Criar lista</button>
+                     <button className="btn btn-lg btn-primary">Criar lista</button>
                   </div>
                </form>
             </div>
