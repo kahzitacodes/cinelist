@@ -1,14 +1,14 @@
 .dropdown {
    overflow-y: scroll;
-   margin-bottom: 30;
-   height: 360;
+   margin-bottom: 30px;
+   max-height: 360px;
    background: white;
    top: 75px;
    width: 100%;
    position: absolute;
    box-shadow: 0px 1px 20px rgba(16, 24, 40, 0.25);
    border-radius: 8px;
-   padding: 12px;
+   padding: 10px 20px;
    z-index: 9999;
 }
 
@@ -25,6 +25,10 @@
    justify-content: space-between;
 }
 
+.dropdownLi:last-child {
+   border-bottom: 0;
+}
+
 .toggleOne {
    width: 35;
    background-color: green;
@@ -35,4 +39,11 @@
    width: 35;
    background-color: red;
    color: white;
+}
+
+.cardsDisplay {
+   display: flex;
+   flex-direction: column;
+   gap: 15px;
+   margin-top: 10px;
 }
