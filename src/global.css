@@ -10,6 +10,7 @@
   --primary4: #651dff;
   --yellow: #ffb904;
   --orange: #ff5f00;
+  --red:#EF5D77;
 }
 
 * {
@@ -88,6 +89,20 @@ h2 {
   color: var(--light);
   border: 2px solid var(--light);
 }
+
+.btn-outlined-primary {
+  background: none;
+  color: var(--primary3);
+  border: 2px solid var(--primary3);
+}
+
+.btn-outlined-red {
+  background: none;
+  color: var(--red);
+  border: 2px solid var(--red);
+}
+
+
 
 .main {
   margin-top: 60px;

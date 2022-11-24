@@ -4,6 +4,9 @@ import style from "./style.module.css";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { ButtonIcon } from "../../components/ButtonIcon";
+import iconPencil from "../../images/edit-2.svg";
+import iconTrash from '../../images/trash-2.svg'
 
 export function HomeRead() {
   const [list, setList] = useState({});
@@ -47,9 +50,10 @@ export function HomeRead() {
         headerTitle={list.listTitle}
         listAutor={list.name}
         listDescription={list.listDescription}
+        headerType={"list"}
       />
 
-      <div className={style.container}>
+      <div className={`container ${style.container}`}>
         {filmes &&
           filmes.map((currentMovie) => {
             return (
@@ -63,20 +67,36 @@ export function HomeRead() {
           })}
       </div>
 
-      <Link to="/edit">
-        <button className={style.button}>Editar lista</button>
-      </Link>
-
-      {/* <Link to="/"> */}
-        <button
-          className={style.button}
+      {/* <button
+        className="btn-outlined-ligh"
+        onClick={() => {
+          handleDelete(list._id);
+        }}
+      >
+        Excluir lista{" "}
+      </button> */}
+      <div className={style.buttons}>
+        <ButtonIcon
+          icon={iconTrash}
+          label="Excluir"
+          btnSize="btn-md"
+          btnStyle="btn-outlined-red"
           onClick={() => {
             handleDelete(list._id);
           }}
-        >
-          Excluir lista
-        </button>
-      {/* </Link> */}
+        />
+
+        <Link to={`/edit/${list._id}`}>
+          <ButtonIcon
+            icon={iconPencil}
+            label="Editar"
+            btnSize="btn-md"
+            btnStyle="btn-outlined-primary"
+          />
+        </Link>
+      </div>
     </div>
   );
 }
+
+

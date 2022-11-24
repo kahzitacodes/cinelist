@@ -1,26 +1,34 @@
 .container {
-  width: 50%px;
-  height: 200px;
-  margin: 10px;
-  border: solid black;
-  padding: 10px;
+  height: 220px;
   overflow: hidden;
+  margin: 0 auto;
+  margin-top: 15px;
+  border:1px solid var(--gray1); 
+  border-radius: 10px;
   display: flex;
-  flex-direction: row-reverse;
-  justify-content: flex-end;
+  gap:20px;
  
 }
 
-.nameList {
-  font-size: 0.9rem;
+
+.containerSecond {
+  display: flexbox;
+  gap: 3rem 2rem;
+  width: 100%;
+  padding: 0.5rem;
+  margin: 0 auto;
 }
 
-.director {
-  font-size: 1rem;
+.nameList{
+  margin:0 auto
 }
 
-.img {
-  width: 120px;
-  border-radius: 15px;
-  margin: 5px;
+.description{
+  margin-top: 5px;
+  color:#747C88
+}
+
+.year{
+  margin-top: 5px;
+  color:#747C88
 }

@@ -1,9 +1,9 @@
-.cardContainer {
-  /* max-width: calc(24% - 1em);
+/* .cardContainer {
+  max-width: calc(24% - 1em);
   flex: 1 0 500px;
   box-sizing: border-box;
-  margin: 0rem .25em 3rem; */
-}
+  margin: 0rem .25em 3rem;
+} */
 
 .nameList {
   color: var(--dark);
