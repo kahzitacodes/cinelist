@@ -1,9 +1,43 @@
-.container {
-  flex-wrap: wrap;
-  overflow: hidden;
-  position: relative;
-  display: flex;
-  border: solid black;
-  margin: 100px;
-  height: 800px;
+.sectionContainer {
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+
+.sectionTitle {
+  font-size: 2.2rem;
+  margin-bottom: 30px;
+}
+
+.cardsContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3rem 2rem;
+  width: 100%;
+  padding: 0.5rem;
+  margin: 0 auto;
+}
+
+.emptyLit {
+  text-align: center;
+  margin: 0 auto;
+  width: 800px;
+}
+
+.emptyLit img {
+  margin-top: 20px;
+  width: 400px;
+}
+
+@media screen and (max-width: 1249px) {
+  .cardsContainer {
+    grid-template-columns: repeat(3, 1fr);
+
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .cardsContainer {
+    grid-template-columns: repeat(2, 1fr);
+
+  }
 }

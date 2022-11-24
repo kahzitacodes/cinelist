@@ -3,14 +3,18 @@ import { Link } from "react-router-dom";
 
 export function HeaderFirst(props) {
   return (
-    <div className={style.div}>
-      <h1 className={style.title}>{props.title}</h1>
+    <div className={style.hero}>
+      <div className="container">
+        <div className={style.heroContent}>
+          <h1 className={style.title}>{props.title}</h1>
 
-      <p className={style.text}>{props.text}</p>
+          <p className={style.text}>{props.text}</p>
 
-      <Link to="/create">
-        <button className={style.button}>Crie uma lista</button>
-      </Link>
+          <Link to="/create">
+            <button className="btn btn-lg btn-primary">Crie uma lista</button>
+          </Link>
+        </div>
+      </div>
     </div>
   );
 }

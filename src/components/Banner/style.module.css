@@ -1,0 +1,34 @@
+.bannerContainer {
+  border-radius: 20px;
+  background-image: url("../../images/banner-popcorn.png");
+  background-size: cover;
+  margin-top: 60px;
+  padding: 60px;
+}
+
+.content {
+  width: 550px;
+}
+
+.title {
+  color: var(--light);
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+@media screen and (max-width: 800px) {
+  .bannerContainer {
+    background-image: url("../../images/banner-popcorn-sm.png");
+    padding: 50px 30px;
+    height: 500px;
+  }
+
+  .content {
+    width: 100%;
+  }
+
+  .title {
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+  }
+}
