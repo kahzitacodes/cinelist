@@ -6,13 +6,14 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { ButtonIcon } from "../../components/ButtonIcon";
 import iconPencil from "../../images/edit-2.svg";
-import iconTrash from '../../images/trash-2.svg'
+import iconTrash from '../../images/trash-2.svg';
+import toast from "react-hot-toast";
 
 export function HomeRead() {
   const [list, setList] = useState({});
 
   const params = useParams();
- const navigate= useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchFilmes() {
@@ -20,7 +21,7 @@ export function HomeRead() {
         const response = await axios.get(
           `https://ironrest.cyclic.app/testeProjeto2/${params.id}`
         );
-      
+
         console.log(response.data);
 
         setList(response.data);
@@ -34,16 +35,44 @@ export function HomeRead() {
 
   console.log(list);
 
-  async function handleDelete(id) {
+  async function deleteList(id, toastId) {
     try {
       await axios.delete(`https://ironrest.cyclic.app/testeProjeto2/${id}`);
-     navigate('/')
+      toast.dismiss(toastId);
+      toast.success('Lista deletada com sucesso!');
+      navigate('/');
     } catch (error) {
       console.log(error);
     }
   }
+
+  async function handleDelete(id) {
+    toast((t) => {
+      return (
+        <div className="toast-content-v">
+          <div className="toast-head">
+            <img src={iconTrash} alt="lixeiera"></img>
+            <h4>Excluir lista?</h4>
+          </div>
+          <p>A lista será deletada de forma permanente.</p>
+          <div className="toast-footer">
+            <button className="btn btn-sm btn-link" onClick={() => toast.dismiss(t.id)}>
+              Cancelar
+            </button>
+            <button className="btn btn-sm btn-red" onClick={() => deleteList(id, t.id)}>
+              Excluir
+            </button>
+          </div>
+        </div>
+      );
+    }, {
+      duration: Infinity,
+    });
+
+  }
+
   const filmes = list.listMovies;
-  console.log(filmes);
+
   return (
     <div>
       <Header
@@ -51,6 +80,7 @@ export function HomeRead() {
         listAutor={list.name}
         listDescription={list.listDescription}
         headerType={"list"}
+        listId={list._id}
       />
 
       <div className={`container ${style.container}`}>
@@ -67,23 +97,13 @@ export function HomeRead() {
           })}
       </div>
 
-      {/* <button
-        className="btn-outlined-ligh"
-        onClick={() => {
-          handleDelete(list._id);
-        }}
-      >
-        Excluir lista{" "}
-      </button> */}
       <div className={style.buttons}>
         <ButtonIcon
           icon={iconTrash}
           label="Excluir"
           btnSize="btn-md"
           btnStyle="btn-outlined-red"
-          onClick={() => {
-            handleDelete(list._id);
-          }}
+          btnFunction={() => handleDelete(list._id)}
         />
 
         <Link to={`/edit/${list._id}`}>

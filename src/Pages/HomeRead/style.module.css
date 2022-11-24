@@ -1,17 +1,16 @@
-.container { 
+.container {
   position: relative;
   margin: 60px auto;
-
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-.buttons{
+.buttons {
 
-display: flex;
-justify-content: center;
-gap: 24px;
-margin-bottom: 60px;
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 60px;
 
 }
-
-
-
