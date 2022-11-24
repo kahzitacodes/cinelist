@@ -11,7 +11,7 @@ export function CreateList() {
   const navigate = useNavigate();
   const urlAPI = "https://ironrest.cyclic.app/testeProjeto2";
 
-  const [moviesToAdd, setMoviesToAdd] = useState([]);
+
 
   const [form, setForm] = useState({
     name: "",
@@ -24,15 +24,17 @@ export function CreateList() {
     setForm({ ...form, [e.target.name]: e.target.value });
   }
   const addMovie = (movie) => {
-    setMoviesToAdd([...moviesToAdd, movie]);
-    setForm({ ...form, listMovies: [...moviesToAdd, movie] });
+    delete movie.isAdd
+    setForm({ ...form, listMovies: [...form.listMovies, movie] });
   };
+
   const removeMovie = (movieId) => {
-    const filteredMovies = moviesToAdd.filter(
+    const filteredMovies = form.listMovies.filter(
       (currentElement) => currentElement.id !== movieId
     );
-    setMoviesToAdd(filteredMovies);
+    setForm({ ...form, listMovies: [...filteredMovies] });
   };
+
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -118,6 +120,7 @@ export function CreateList() {
               addMovieAction={addMovie}
               removeMovieAction={removeMovie}
               moviesToDisplay={form.listMovies}
+
             />
 
             <div className="form-actions">

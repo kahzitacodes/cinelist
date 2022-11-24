@@ -30,11 +30,16 @@ const navigate = useNavigate();
     }
 
   
-   const removeMovie = (movieId) => {
+    const addMovie = (movie) => {
+      delete movie.isAdd
+      setForm({ ...form, listMovies: [...form.listMovies, movie] });
+    };
+  
+    const removeMovie = (movieId) => {
       const filteredMovies = form.listMovies.filter(
         (currentElement) => currentElement.id !== movieId
       );
-      setForm(filteredMovies);
+      setForm({ ...form, listMovies: [...filteredMovies] });
     };
   
 
@@ -57,9 +62,6 @@ const navigate = useNavigate();
       fetchNote();
     }, []);
 
-    const addMovie = (movie) => {
-      setForm({ ...form, listMovies: [...form.listMovies, movie] });
-    };
 
     async function handleSubmit(e) {
 
@@ -134,6 +136,7 @@ const navigate = useNavigate();
                   addMovieAction={addMovie}
                   removeMovieAction={removeMovie}
                   moviesToDisplay={form.listMovies}
+                  documentId={params.id}
                   />
 
                   <div className="form-actions">
