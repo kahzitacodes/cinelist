@@ -32,15 +32,16 @@ export function Home(props) {
       />
 
       <div className={style.container}>
-        {/* img={`https://image.tmdb.org/t/p/w500 ${filme.listMovies.backdrop_path}`} /> */}
 
         {filmes.slice(0, 8).map((filme) => (
           <Card
-            nameList={filme.listTitle}
-            director={filme.name}
-            id={filme._id}
-            description={filme.listDescription}
-          />
+          nameList={filme.listTitle}
+          director={filme.name}
+          id={filme._id}
+          description={filme.listDescription}
+          img={`https://image.tmdb.org/t/p/w500${filme.listMovies[0].backdrop_path}`} />
+          
+          
         ))}
       </div>
 

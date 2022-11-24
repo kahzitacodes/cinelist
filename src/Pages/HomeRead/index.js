@@ -29,28 +29,44 @@ export function HomeRead() {
 
   console.log(list);
 
+  async function handleDelete(id) {
+    try {
+      axios.delete(`https://ironrest.cyclic.app/CineList/${id}`);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <div>
-      <Header />
+      {/* <Header /> */}
+      {/* img={filme.image}  */}
+      {list.map((filme) => (
+        <Header
+          headerTitle={filme.listTitle}
+          listAutor={filme.name}
+          listDescription={filme.listDescription}
+          id={filme._id}
+        />
+      ))}
 
       <div className={style.container}>
-        {/* img={filme.image}  */}
 
-        {list.map((filme) => (
-          <CardRead
-            nameList={filme.listTitle}
-            director={filme.name}
-            id={filme._id}
-          />
-        ))}
       </div>
 
-      <Link to="/create">
+      <Link to="/edit">
         <button className={style.button}>Editar lista</button>
       </Link>
 
-      <Link to="/create">
-        <button className={style.button}>Excluir lista</button>
+      <Link to="/">
+        <button
+          className={style.button}
+          onClick={() => {
+          handleDelete();
+          }}
+        >
+          Excluir lista
+        </button>
       </Link>
     </div>
   );

@@ -1,8 +1,4 @@
 .dropdown {
-<<<<<<< HEAD
-  overflow-y: scroll;
-}
-=======
    overflow-y: scroll;
    margin-bottom: 30;
    height: 360;
@@ -40,4 +36,3 @@
    background-color: red;
    color: white;
 }
->>>>>>> 007cd9e634fb460898173c818c72783d2ba3bc4c
