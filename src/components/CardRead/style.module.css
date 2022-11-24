@@ -1,34 +1,31 @@
 .container {
-  height: 220px;
+  height: 260px;
   overflow: hidden;
   margin: 0 auto;
-  margin-top: 15px;
-  border:1px solid var(--gray1); 
+  border: 1px solid var(--gray1);
   border-radius: 10px;
   display: flex;
-  gap:20px;
- 
+
 }
 
 
 .containerSecond {
-  display: flexbox;
   gap: 3rem 2rem;
   width: 100%;
-  padding: 0.5rem;
+  padding: 16px 20px;
   margin: 0 auto;
 }
 
-.nameList{
-  margin:0 auto
+.nameList {
+  margin: 0 auto
 }
 
-.description{
+.description {
   margin-top: 5px;
-  color:#747C88
+  color: var(--gray3)
 }
 
-.year{
+.year {
   margin-top: 5px;
-  color:#747C88
+  color: var(--gray3)
 }

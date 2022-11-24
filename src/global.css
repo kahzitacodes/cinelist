@@ -10,7 +10,7 @@
   --primary4: #651dff;
   --yellow: #ffb904;
   --orange: #ff5f00;
-  --red:#EF5D77;
+  --red: #EF5D77;
 }
 
 * {
@@ -65,7 +65,7 @@ h2 {
   border-radius: 8px;
   padding: 8px 10px;
   font-size: .925rem;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .btn-lg {
@@ -80,6 +80,11 @@ h2 {
   background-color: var(--primary3);
 }
 
+.btn-red {
+  color: white;
+  background-color: var(--red);
+}
+
 .btn-primary:hover {
   background-color: var(--primary4);
 }
@@ -90,19 +95,42 @@ h2 {
   border: 2px solid var(--light);
 }
 
+.btn-outlined-light:hover {
+  background: rgba(255, 255, 255, .1);
+}
+
 .btn-outlined-primary {
   background: none;
   color: var(--primary3);
   border: 2px solid var(--primary3);
 }
 
+.btn-outlined-primary:hover {
+  background: rgba(121, 58, 255, .1)
+}
+
 .btn-outlined-red {
   background: none;
   color: var(--red);
   border: 2px solid var(--red);
+  font-weight: 600;
 }
 
+.btn-outlined-red:hover {
+  background: rgba(239, 93, 119, .1);
+}
 
+.btn-link {
+  background: none;
+  border: none;
+  color: var(--gray3);
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn-link:hover {
+  background-color: var(--gray1);
+}
 
 .main {
   margin-top: 60px;
@@ -112,6 +140,24 @@ h2 {
   display: flex;
   gap: 10px;
   align-items: center;
+}
+
+.toast-content-v {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.toast-head {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+}
+
+.toast-footer {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
 }
 
 
