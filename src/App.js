@@ -7,7 +7,6 @@ import { CreateList } from "./pages/CreateList";
 import { Toaster } from "react-hot-toast";
 import { EditList } from "./pages/EditList";
 
-
 function App() {
   return (
     <div className="App">

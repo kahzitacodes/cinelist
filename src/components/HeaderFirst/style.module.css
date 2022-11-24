@@ -1,9 +1,20 @@
+<<<<<<< HEAD
+.div {
+  border-top: 10px solid var(--primary3);
+  height: 500px;
+  padding: 50px;
+  background-image: url("../../images/imgTop.png");
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-position: right center;
+=======
 .hero {
   background-image: url("../../images/imgTop.png");
   background-repeat: no-repeat;
   background-size: cover;
   border-top: 10px solid var(--primary3);
   padding: 80px 0 100px;
+>>>>>>> 2944938c115da30eca587ee94ea3cfd6b9df2fb0
 }
 
 .heroContent {
