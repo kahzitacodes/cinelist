@@ -11,7 +11,7 @@ export function HeaderFirst(props) {
 
       <p className={style.text}>{props.text}</p>
 
-      <Link to="/teste">
+      <Link to="/create">
         <button className={style.button}>Crie uma lista</button>
       </Link>
 
