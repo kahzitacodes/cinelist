@@ -1,11 +1,11 @@
 .div {
-  /* background-color:#1d2433; */
   border-top: 10px solid var(--primary3);
   height: 500px;
   padding: 50px;
   background-image: url("../../images/imgTop.png");
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size:cover;
+  background-position: right center;
 }
 
 .img {
