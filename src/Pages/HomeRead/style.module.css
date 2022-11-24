@@ -1,19 +1,17 @@
-.container {
-  flex-wrap: wrap;
-  overflow: hidden;
+.container { 
   position: relative;
-  border: solid black;
-  margin: 100px;
-  
-  height: 1000px;
-  padding: 50px;
+  margin: 60px auto;
+
 }
 
-.button {
-  background: #793aff;
-  font-size: 1rem;
-  padding: 10px;
-  border-radius: 10px;
-  margin-left: 40px;
-  margin-top: 10px;
+.buttons{
+
+display: flex;
+justify-content: center;
+gap: 24px;
+margin-bottom: 60px;
+
 }
+
+
+
