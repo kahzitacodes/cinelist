@@ -14,7 +14,7 @@ function App() {
       <Toaster />
       
       <Routes>
-        <Route path="/edit" element={<EditList />} />
+        <Route path="/edit/:id" element={<EditList />} />
         <Route path="/" element={<Home />} />
         <Route path="/create" element={<CreateList />} />
         <Route path="/:id" element={<HomeRead />} />
