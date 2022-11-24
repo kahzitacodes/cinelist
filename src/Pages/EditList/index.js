@@ -8,6 +8,7 @@ import { Header } from "../../components/Header";
 import { SearchBar } from "../../components/SearchBar";
 
 export function EditList() {
+
    return (
       <>
          <Header headerType="default" headerTitle="Edita a sua lista de recomendações" />

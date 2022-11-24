@@ -1,40 +1,51 @@
 import { Card } from "../../components/Card";
 import { Link } from "react-router-dom";
 import { HeaderFirst } from "../../components/HeaderFirst";
-import {Footer} from '../../components/Footer';
-import {list} from '../../data';
+import { Footer } from "../../components/Footer";
 import style from "./style.module.css";
-
-const filmes = [
-  { name: "harry" },
-  { name: "spider" },
-  { name: "black" },
-  { name: "it" },
-];
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 export function Home(props) {
+  const [filmes, setFilmes] = useState([]);
+
+  useEffect(() => {
+    async function fetchFilmes() {
+      try {
+        const response = await axios.get(
+          "https://ironrest.cyclic.app/testeProjeto2"
+        );
+        console.log(response);
+
+        setFilmes([...response.data]);
+      } catch (error) {}
+    }
+
+    fetchFilmes();
+  }, []);
+
   return (
+    <div>
+      <HeaderFirst
+        title="Compartilhe seus filmes e séries favoritos!"
+        text="Acesse listas de recomendações e também compartilhe seus filmes e sériesfavotiros"
+      />
 
-
-    
-<div>
-
-    <HeaderFirst  title="Compartilhe seus filmes e séries favoritos!"
-      text="Acesse listas de recomendações e também compartilhe seus filmes e sériesfavotiros" />
-
-     
       <div className={style.container}>
 
-        {list.slice(0, 8).map((filme) => (
-          <Card  nameList={filme.title} director={filme.autor} img={filme.image} id={filme._id}/>
+        {filmes.slice(0, 8).map((filme) => (
+          <Card
+          nameList={filme.listTitle}
+          director={filme.name}
+          id={filme._id}
+          description={filme.listDescription}
+          img={`https://image.tmdb.org/t/p/w500${filme.listMovies[0].backdrop_path}`} />
+          
+          
         ))}
-        
       </div>
 
-     <Footer title='Crie listas com suas séries e filmes e compartilhe!' />
-
-      
+      <Footer title="Crie listas com suas séries e filmes e compartilhe!" />
     </div>
   );
 }
-

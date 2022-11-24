@@ -1,5 +1,5 @@
 import { useEffect, useState, useMemo } from "react";
-import axios from 'axios';
+import axios from "axios";
 import debounce from "lodash.debounce";
 import style from "./style.module.css";
 
@@ -15,22 +15,22 @@ export function SearchBar(props) {
 
 
 
-   const apiKey = "24e1069de660c324728bbf37a36d24bd";
+  const apiKey = "24e1069de660c324728bbf37a36d24bd";
 
-   const handleSearch = (e) => {
-      setSearchInput(e.target.value);
-   };
+  const handleSearch = (e) => {
+    setSearchInput(e.target.value);
+  };
 
-   // toggle buttons to add or remove movie from list
-   // const handleToggle = () => {
-   //    setToggle(!toggle);
-   // };
+  // toggle buttons to add or remove movie from list
+  // const handleToggle = () => {
+  //    setToggle(!toggle);
+  // };
 
-   // Set a 'delay' before evoking the handleSearch function  
-   const debouncedHandleSearch = useMemo(() => {
-      console.log(searchInput);
-      return debounce(handleSearch, 300);
-   }, []);
+  // Set a 'delay' before evoking the handleSearch function
+  const debouncedHandleSearch = useMemo(() => {
+    console.log(searchInput);
+    return debounce(handleSearch, 300);
+  }, []);
 
    const handleButtonChange = () => {
       setToggleButton(!toggleButton);
@@ -55,10 +55,10 @@ export function SearchBar(props) {
 
 
 
-   // Search on type
-   useEffect(() => {
-      async function fetchMovies() {
-
+  // Search on type
+  useEffect(() => {
+    async function fetchMovies() {
+      
          try {
             if (!searchInput) {
                return;
@@ -73,25 +73,25 @@ export function SearchBar(props) {
             console.log();
          }
       }
-      fetchMovies();
+    
+    fetchMovies();
+  }, [searchInput]);
 
-   }, [searchInput]);
+  return (
+    <>
+      <h2> Selecione os títulos da lista </h2>
+      <div className="form-control" style={{ position: "relative" }}>
+        <label htmlFor="input-search">Busque por algum título</label>
+        <input
+          className="form-item"
+          id="input-search"
+          type="text"
+          name="search"
+          onChange={debouncedHandleSearch}
+          placeholder="ex: senhor dos anéis"
+        />
 
-
-   return (
-      <>
-         <h2> Selecione os títulos da lista </h2>
-         <div className="form-control" style={{ position: "relative" }}>
-            <label htmlFor="input-search">Busque por algum título</label>
-            <input
-               className="form-item"
-               id="input-search"
-               type="text"
-               name="search"
-               onChange={debouncedHandleSearch}
-               placeholder="ex: senhor dos anéis"
-            />
-
+       
             {/* dropdown that display search results in a list */}
             {!open ? null :
                (
