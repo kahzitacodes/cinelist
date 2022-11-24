@@ -8,7 +8,7 @@ export function SearchBar(props) {
    const { addMovieAction, removeMovieAction, moviesToDisplay } = props;
    const [searchInput, setSearchInput] = useState("");
    const [movies, setMovies] = useState([]);
-  // const [moviesToAdd, setMoviesToAdd] = useState([]);
+   // const [moviesToAdd, setMoviesToAdd] = useState([]);
    const [open, setOpen] = useState(false);
    const [toggleButton, setToggleButton] = useState(true);
 
@@ -33,15 +33,15 @@ export function SearchBar(props) {
   }, []);
 
    const handleButtonChange = () => {
-         setToggleButton(!toggleButton)
-   }
+      setToggleButton(!toggleButton);
+   };
 
    const addMovie = (movie) => {
-     // setMoviesToAdd([...moviesToAdd, movie]);
-     addMovieAction(movie)
+      // setMoviesToAdd([...moviesToAdd, movie]);
+      addMovieAction(movie);
 
-      handleButtonChange()
-      
+      handleButtonChange();
+
 
       setOpen(false);
       setSearchInput("");
@@ -121,12 +121,12 @@ export function SearchBar(props) {
                                   
 
                                     }}> - </button>} */}
-                                    <button className={moviesToDisplay.includes(currentElement) ? style.toggleTwo : style.toggleOne} type="button" onClick={() => {
+                                 <button className={moviesToDisplay.includes(currentElement) ? style.toggleTwo : style.toggleOne} type="button" onClick={() => {
 
-                                    moviesToDisplay.includes(currentElement) ? removeMovieAction(currentElement.id) : addMovie(currentElement)
+                                    moviesToDisplay.includes(currentElement) ? removeMovieAction(currentElement.id) : addMovie(currentElement);
 
-                                    }}> + </button> 
-                                 
+                                 }}> + </button>
+
                               </li>
                            );
                         })}

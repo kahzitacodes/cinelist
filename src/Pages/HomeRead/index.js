@@ -5,8 +5,9 @@ import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
+
 export function HomeRead() {
-  const [list, setList] = useState([]);
+  const [list, setList] = useState({});
 
   const params = useParams();
 
@@ -16,9 +17,9 @@ export function HomeRead() {
         const response = await axios.get(
           `https://ironrest.cyclic.app/testeProjeto2/${params.id}`
         );
-        console.log(response);
+        // console.log(response);
 
-        setList([response.data]);
+        setList(response.data);
       } catch (error) {
         console.log(error);
       }
@@ -36,21 +37,34 @@ export function HomeRead() {
       console.log(error);
     }
   }
-
+const filmes = list.listMovies
+console.log(filmes);
   return (
     <div>
-      {/* <Header /> */}
-      {/* img={filme.image}  */}
-      {list.map((filme) => (
-        <Header
-          headerTitle={filme.listTitle}
-          listAutor={filme.name}
-          listDescription={filme.listDescription}
-          id={filme._id}
-        />
-      ))}
+    
+      <Header
+        headerTitle={list.listTitle}
+        listAutor={list.name}
+        listDescription={list.listDescription}
+      
+      />
 
       <div className={style.container}>
+
+
+   {filmes.map((currentMovie)=>{
+
+return (
+  <CardRead
+    nameList={currentMovie.title}
+    description={currentMovie.overview}
+    year={new Date(currentMovie.release_date).getFullYear()}
+    img={`https://image.tmdb.org/t/p/w500${currentMovie.poster_path}`}
+  />
+);
+
+})}
+
 
       </div>
 
@@ -62,7 +76,7 @@ export function HomeRead() {
         <button
           className={style.button}
           onClick={() => {
-          handleDelete();
+            handleDelete();
           }}
         >
           Excluir lista

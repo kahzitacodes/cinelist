@@ -14,7 +14,7 @@
 
 .dropdownUl {
    display: flex;
-   flex-direction: column; 
+   flex-direction: column;
    padding: 5px 0;
 }
 
@@ -25,13 +25,13 @@
    justify-content: space-between;
 }
 
-.toggleOne{
+.toggleOne {
    width: 35;
    background-color: green;
    color: white;
 }
 
-.toggleTwo{
+.toggleTwo {
    width: 35;
    background-color: red;
    color: white;
