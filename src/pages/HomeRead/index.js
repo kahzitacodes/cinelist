@@ -88,6 +88,7 @@ export function HomeRead() {
           filmes.map((currentMovie) => {
             return (
               <CardRead
+                key={currentMovie.id}
                 nameList={currentMovie.title}
                 description={currentMovie.overview}
                 year={new Date(currentMovie.release_date).getFullYear()}
