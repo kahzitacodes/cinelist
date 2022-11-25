@@ -5,7 +5,6 @@ import style from "./style.module.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import michael from "../../images/michael-scott.webp"
-//Release directory
 
 
 export function Home() {
