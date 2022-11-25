@@ -4,17 +4,20 @@ import { Banner } from "../../components/Banner";
 import style from "./style.module.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import michael from "../../images/michael-scott.webp";
-import { isEmpty } from "lodash";
+import michael from "../../images/michael-scott.webp"
+
+
 
 export function Home() {
+
   const [filmes, setFilmes] = useState([]);
+
 
   useEffect(() => {
     async function fetchFilmes() {
       try {
         const response = await axios.get(
-          "https://ironrest.cyclic.app/testeProjeto2"
+          "https://ironrest.cyclic.app/CineList"
         );
         console.log(response);
 
@@ -24,6 +27,7 @@ export function Home() {
 
     fetchFilmes();
   }, []);
+
 
   return (
     <div>
@@ -56,7 +60,6 @@ export function Home() {
           ))}
 
         </div>
-
         <Banner title="Crie listas com suas séries e filmes e compartilhe!" />
       </div>
 

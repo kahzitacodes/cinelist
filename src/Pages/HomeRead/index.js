@@ -19,7 +19,7 @@ export function HomeRead() {
     async function fetchFilmes() {
       try {
         const response = await axios.get(
-          `https://ironrest.cyclic.app/testeProjeto2/${params.id}`
+          `https://ironrest.cyclic.app/CineList/${params.id}`
         );
 
         console.log(response.data);
@@ -37,7 +37,7 @@ export function HomeRead() {
 
   async function deleteList(id, toastId) {
     try {
-      await axios.delete(`https://ironrest.cyclic.app/testeProjeto2/${id}`);
+      await axios.delete(`https://ironrest.cyclic.app/CineList/${id}`);
       toast.dismiss(toastId);
       toast.success('Lista deletada com sucesso!');
       navigate('/');

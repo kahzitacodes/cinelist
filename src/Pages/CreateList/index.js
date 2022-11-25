@@ -3,14 +3,13 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
-
 import { Header } from "../../components/Header";
 import { SearchBar } from "../../components/SearchBar";
 
 export function CreateList() {
-  const navigate = useNavigate();
-  const urlAPI = "https://ironrest.cyclic.app/testeProjeto2";
 
+  const navigate = useNavigate();
+  const urlAPI = "https://ironrest.cyclic.app/CineList";
 
 
   const [form, setForm] = useState({
@@ -20,13 +19,17 @@ export function CreateList() {
     listMovies: [],
   });
 
+
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
   }
+
+
   const addMovie = (movie) => {
     delete movie.isAdd
     setForm({ ...form, listMovies: [...form.listMovies, movie] });
   };
+
 
   const removeMovie = (movieId) => {
     const filteredMovies = form.listMovies.filter(
@@ -64,6 +67,7 @@ export function CreateList() {
       console.log(error);
     }
   }
+
 
   return (
     <>
@@ -132,4 +136,4 @@ export function CreateList() {
       </main>
     </>
   );
-}
+};
