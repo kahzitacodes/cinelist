@@ -3,8 +3,6 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
-
-
 import { Header } from "../../components/Header";
 import { SearchBar } from "../../components/SearchBar";
 
@@ -14,15 +12,12 @@ export function EditList() {
 
 const navigate = useNavigate();
 
-
    const [form, setForm] = useState({
       name: "",
       listTitle: "",
       listDescription: "",
       listMovies: [],
     });
-
-   
 
    
     function handleChange(e) {
@@ -35,6 +30,7 @@ const navigate = useNavigate();
       setForm({ ...form, listMovies: [...form.listMovies, movie] });
     };
   
+
     const removeMovie = (movieId) => {
       const filteredMovies = form.listMovies.filter(
         (currentElement) => currentElement.id !== movieId
@@ -50,7 +46,7 @@ const navigate = useNavigate();
       async function fetchNote() {
         try {
 
-          const response = await axios.get(`https:/ironrest.cyclic.app/testeProjeto2/${params.id}`);
+          const response = await axios.get(`https:/ironrest.cyclic.app/CineList/${params.id}`);
    
           setForm(response.data);
 
@@ -71,7 +67,7 @@ const navigate = useNavigate();
         const infosToSendForAPI = { ...form };
   
         delete infosToSendForAPI._id;
-        await axios.put(`https://ironrest.cyclic.app/testeProjeto2/${params.id}`, infosToSendForAPI);
+        await axios.put(`https://ironrest.cyclic.app/CineList/${params.id}`, infosToSendForAPI);
         navigate("/");
 
       } 

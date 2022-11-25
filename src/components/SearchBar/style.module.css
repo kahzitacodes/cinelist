@@ -29,21 +29,43 @@
    border-bottom: 0;
 }
 
-.toggleOne {
-   width: 35;
-   background-color: green;
-   color: white;
-}
-
-.toggleTwo {
-   width: 35;
-   background-color: red;
-   color: white;
-}
-
 .cardsDisplay {
    display: flex;
    flex-direction: column;
    gap: 15px;
    margin-top: 10px;
 }
+
+.btnDropdownAdd {
+   cursor:hand;
+   cursor:pointer;
+   background-color: green;
+   border: none;
+   color: white;
+   text-align: center;
+   text-decoration: none;
+   display: inline-block;
+   font-size: 0.7rem;
+   text-transform: uppercase;
+   height: 40px;
+   width: 80px;
+   border-radius: 5px;
+   font-weight: bold;
+ }
+
+.btnDropdownDel {
+   cursor:hand;
+   cursor:pointer;
+   background-color: red;
+   border: none;
+   color: white;
+   text-align: center;
+   text-decoration: none;
+   display: inline-block;
+   font-size: 0.7rem;
+   text-transform: uppercase;
+   height: 40px;
+   width: 80px;
+   border-radius: 5px;
+   font-weight: bold;
+ }
