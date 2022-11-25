@@ -37,35 +37,32 @@
 }
 
 .btnDropdownAdd {
-   cursor:hand;
-   cursor:pointer;
-   background-color: green;
-   border: none;
-   color: white;
-   text-align: center;
-   text-decoration: none;
-   display: inline-block;
-   font-size: 0.7rem;
-   text-transform: uppercase;
+   cursor: pointer;
+   border: 2px solid var(--primary3);
    height: 40px;
-   width: 80px;
-   border-radius: 5px;
-   font-weight: bold;
- }
+   width: 40px;
+   border-radius: 50%;
+   background: url("../../images/plus.svg") no-repeat 6px 6px;
+   text-indent: 9999px;
+   transition: all .15s ease-in-out
+}
+
+.btnDropdownAdd:hover {
+   background-color: rgba(121, 58, 255, .1)
+}
 
 .btnDropdownDel {
-   cursor:hand;
-   cursor:pointer;
-   background-color: red;
+   background: url("../../images/check.svg") no-repeat 8px 8px var(--primary3);
+   cursor: pointer;
    border: none;
-   color: white;
-   text-align: center;
-   text-decoration: none;
-   display: inline-block;
-   font-size: 0.7rem;
-   text-transform: uppercase;
    height: 40px;
-   width: 80px;
-   border-radius: 5px;
-   font-weight: bold;
- }
+   width: 40px;
+   border-radius: 50%;
+   text-indent: 9999px;
+   transition: all .15s ease-in-out
+}
+
+.btnDropdownDel:hover {
+   background-image: url("../../images/trash.svg");
+
+}
