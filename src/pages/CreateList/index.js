@@ -26,7 +26,7 @@ export function CreateList() {
 
 
   const addMovie = (movie) => {
-    delete movie.isAdd
+    delete movie.isAdd;
     setForm({ ...form, listMovies: [...form.listMovies, movie] });
   };
 
@@ -124,7 +124,6 @@ export function CreateList() {
               addMovieAction={addMovie}
               removeMovieAction={removeMovie}
               moviesToDisplay={form.listMovies}
-
             />
 
             <div className="form-actions">

@@ -1,7 +1,7 @@
 import style from "./style.module.css";
 import { Link } from "react-router-dom";
 
-export function HeaderFirst(props) {
+export function Hero(props) {
   return (
     <div className={style.hero}>
       <div className="container">

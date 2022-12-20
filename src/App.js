@@ -2,22 +2,21 @@ import "./global.css";
 import "./forms.css";
 import { Routes, Route } from "react-router-dom";
 import { Home } from "./pages/Home";
-import { HomeRead } from "./pages/HomeRead";
+import { ListDetails } from "./pages/ListDetails";
 import { CreateList } from "./pages/CreateList";
 import { Toaster } from "react-hot-toast";
 import { EditList } from "./pages/EditList";
-//Release
 
 function App() {
   return (
     <div className="App">
       <Toaster />
-      
+
       <Routes>
-        <Route path="/edit/:id" element={<EditList />} />
         <Route path="/" element={<Home />} />
+        <Route path="/:id" element={<ListDetails />} />
         <Route path="/create" element={<CreateList />} />
-        <Route path="/:id" element={<HomeRead />} />
+        <Route path="/edit/:id" element={<EditList />} />
 
       </Routes>
     </div>

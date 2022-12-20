@@ -10,83 +10,83 @@ import { SearchBar } from "../../components/SearchBar";
 
 export function EditList() {
 
-const navigate = useNavigate();
+   const navigate = useNavigate();
 
    const [form, setForm] = useState({
       name: "",
       listTitle: "",
       listDescription: "",
       listMovies: [],
-    });
+   });
 
-   
-    function handleChange(e) {
+
+   function handleChange(e) {
       setForm({ ...form, [e.target.name]: e.target.value });
-    }
+   }
 
-  
-    const addMovie = (movie) => {
-      delete movie.isAdd
+
+   const addMovie = (movie) => {
+      delete movie.isAdd;
       setForm({ ...form, listMovies: [...form.listMovies, movie] });
-    };
-  
+   };
 
-    const removeMovie = (movieId) => {
+
+   const removeMovie = (movieId) => {
       const filteredMovies = form.listMovies.filter(
-        (currentElement) => currentElement.id !== movieId
+         (currentElement) => currentElement.id !== movieId
       );
       setForm({ ...form, listMovies: [...filteredMovies] });
-    };
-  
+   };
+
 
    const params = useParams();
 
 
    useEffect(() => {
       async function fetchNote() {
-        try {
+         try {
 
-          const response = await axios.get(`https:/ironrest.cyclic.app/CineList/${params.id}`);
-   
-          setForm(response.data);
+            const response = await axios.get(`https:/ironrest.cyclic.app/CineList/${params.id}`);
 
-        } catch (err) {
-          console.log(err);
-        }
-    
+            setForm(response.data);
+
+         } catch (err) {
+            console.log(err);
+         }
+
       }
       fetchNote();
-    }, []);
+   }, []);
 
 
-    async function handleSubmit(e) {
+   async function handleSubmit(e) {
 
       e.preventDefault();
-  
-      try {
-        const infosToSendForAPI = { ...form };
-  
-        delete infosToSendForAPI._id;
-        await axios.put(`https://ironrest.cyclic.app/CineList/${params.id}`, infosToSendForAPI);
-        navigate("/");
 
-      } 
-      catch (err) {
-        console.log(err);
-        toast.error("Ops! Algo deu errado ...");
+      try {
+         const infosToSendForAPI = { ...form };
+
+         delete infosToSendForAPI._id;
+         await axios.put(`https://ironrest.cyclic.app/CineList/${params.id}`, infosToSendForAPI);
+         navigate("/");
+
       }
-    }
-  
+      catch (err) {
+         console.log(err);
+         toast.error("Ops! Algo deu errado ...");
+      }
+   }
+
 
    return (
       <>
-         <Header headerType="default" headerTitle="Edita a sua lista de recomendações" />
+         <Header headerType="default" headerTitle="Editar lista" />
 
          <main className="main">
             <div className={style.container}>
                <form onSubmit={handleSubmit}>
 
-                  <h2>Modificações das informações da lista</h2>
+                  <h2>Informações da lista</h2>
 
                   <div className="form-group">
                      <div className="form-control">
@@ -129,17 +129,17 @@ const navigate = useNavigate();
                   </div>
 
                   <SearchBar
-                  addMovieAction={addMovie}
-                  removeMovieAction={removeMovie}
-                  moviesToDisplay={form.listMovies}
-                  documentId={params.id}
+                     addMovieAction={addMovie}
+                     removeMovieAction={removeMovie}
+                     moviesToDisplay={form.listMovies}
+                     documentId={params.id}
                   />
 
                   <div className="form-actions">
                      <Link to="/">Cancelar</Link>
                      <button className="btn btn-lg btn-primary">Editar lista</button>
                   </div>
-                  
+
                </form>
             </div>
          </main>

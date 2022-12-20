@@ -1,15 +1,15 @@
-import { Header } from "../../components/Header";
-import { CardRead } from "../../components/CardRead";
 import style from "./style.module.css";
+import { Header } from "../../components/Header";
+import { CardMovie } from "../../components/CardMovie";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import axios from "axios";
 import { ButtonIcon } from "../../components/ButtonIcon";
+import axios from "axios";
 import iconPencil from "../../images/edit-2.svg";
 import iconTrash from '../../images/trash-2.svg';
 import toast from "react-hot-toast";
 
-export function HomeRead() {
+export function ListDetails() {
   const [list, setList] = useState({});
 
   const params = useParams();
@@ -21,8 +21,6 @@ export function HomeRead() {
         const response = await axios.get(
           `https://ironrest.cyclic.app/CineList/${params.id}`
         );
-
-        console.log(response.data);
 
         setList(response.data);
       } catch (error) {
@@ -87,12 +85,12 @@ export function HomeRead() {
         {filmes &&
           filmes.map((currentMovie) => {
             return (
-              <CardRead
+              <CardMovie
                 key={currentMovie.id}
-                nameList={currentMovie.title}
-                description={currentMovie.overview}
-                year={new Date(currentMovie.release_date).getFullYear()}
-                img={`https://image.tmdb.org/t/p/w500${currentMovie.poster_path}`}
+                title={currentMovie.title}
+                overview={currentMovie.overview}
+                releaseDate={new Date(currentMovie.release_date).getFullYear()}
+                image={`https://image.tmdb.org/t/p/w500${currentMovie.poster_path}`}
               />
             );
           })}

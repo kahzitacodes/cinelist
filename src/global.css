@@ -1,8 +1,8 @@
 :root {
   --dark: #010101;
-  --gray1: #dadcdf;
-  --gray2: #a9b1bd;
-  --gray3: #747c88;
+  --grey1: #dadcdf;
+  --grey2: #a9b1bd;
+  --grey3: #747c88;
   --light: #FEFEFE;
   --primary1: #d4c0ff;
   --primary2: #ad86ff;
@@ -123,13 +123,13 @@ h2 {
 .btn-link {
   background: none;
   border: none;
-  color: var(--gray3);
+  color: var(--grey3);
   cursor: pointer;
   font-weight: 600;
 }
 
 .btn-link:hover {
-  background-color: var(--gray1);
+  background-color: var(--grey1);
 }
 
 .main {
