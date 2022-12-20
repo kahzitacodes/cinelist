@@ -10,10 +10,9 @@
 
 .cardsContainer {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 3rem 2rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3rem 1.25rem;
   width: 100%;
-  padding: 0.5rem;
   margin: 0 auto;
 }
 
@@ -28,16 +27,17 @@
   width: 400px;
 }
 
-@media screen and (max-width: 1249px) {
+@media screen and (min-width: 800px) {
   .cardsContainer {
     grid-template-columns: repeat(3, 1fr);
 
   }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (min-width: 1249px) {
   .cardsContainer {
-    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem 2rem;
+    grid-template-columns: repeat(4, 1fr);
 
   }
 }

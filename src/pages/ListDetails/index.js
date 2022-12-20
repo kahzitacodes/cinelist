@@ -8,9 +8,12 @@ import axios from "axios";
 import iconPencil from "../../images/edit-2.svg";
 import iconTrash from '../../images/trash-2.svg';
 import toast from "react-hot-toast";
+import 'react-loading-skeleton/dist/skeleton.css';
+import { CardMovieSkeleton } from "../../components/CardMovieSkeleton";
 
 export function ListDetails() {
   const [list, setList] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
 
   const params = useParams();
   const navigate = useNavigate();
@@ -23,6 +26,7 @@ export function ListDetails() {
         );
 
         setList(response.data);
+        setIsLoading(false);
       } catch (error) {
         console.log(error);
       }
@@ -74,15 +78,17 @@ export function ListDetails() {
   return (
     <div>
       <Header
+        isLoading={isLoading}
         headerTitle={list.listTitle}
         listAutor={list.name}
         listDescription={list.listDescription}
         headerType={"list"}
         listId={list._id}
       />
-
       <div className={`container ${style.container}`}>
-        {filmes &&
+
+        {isLoading ? <CardMovieSkeleton cards={8} /> :
+
           filmes.map((currentMovie) => {
             return (
               <CardMovie
@@ -93,7 +99,8 @@ export function ListDetails() {
                 image={`https://image.tmdb.org/t/p/w500${currentMovie.poster_path}`}
               />
             );
-          })}
+          })
+        }
       </div>
 
       <div className={style.buttons}>

@@ -3,19 +3,26 @@ import axios from "axios";
 import style from "./style.module.css";
 import { CardMovie } from "../CardMovie";
 import iconClose from "../../images/close.svg";
+import { useOutsideClick } from "../../useOutsideClick";
 
 export function SearchBar(props) {
 
-   const ref = useRef(null);
-
    const { addMovieAction, removeMovieAction, moviesToDisplay } = props;
+   const apiKey = "24e1069de660c324728bbf37a36d24bd";
+
+
+   const ref = useRef(null);
    const [searchInput, setSearchInput] = useState("");
    const [movies, setMovies] = useState([]);
    const [open, setOpen] = useState(false);
    const [showClearButton, setShowClearButton] = useState(false);
 
-   const apiKey = "24e1069de660c324728bbf37a36d24bd";
 
+   const handleOutsideClick = () => {
+      setOpen(false);
+   };
+
+   const clickRef = useOutsideClick(handleOutsideClick);
 
    const handleSearch = (e) => {
       setSearchInput(e.target.value);
@@ -67,7 +74,6 @@ export function SearchBar(props) {
 
 
    useEffect(() => {
-
       if (searchInput !== "") {
          setOpen(true);
          setShowClearButton(true);
@@ -100,14 +106,14 @@ export function SearchBar(props) {
 
             {!open ? null :
                (
-                  <div className={style.dropdown}>
+                  <div className={style.dropdown} ref={clickRef} >
 
                      <ul className={style.dropdownUl}>
                         {movies.map((currentElement) => {
                            console.log(currentElement.isAdd);
                            return (
                               <li className={style.dropdownLi} key={currentElement.id}>
-                                 <strong>{currentElement.title} </strong>
+                                 <span className={style.liContent}><strong>{currentElement.title}</strong> ({new Date(currentElement.release_date).getFullYear()})</span>
 
                                  {currentElement.isAdd ?
 

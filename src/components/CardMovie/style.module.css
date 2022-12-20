@@ -1,4 +1,4 @@
-.cardForm {
+.movieCard {
    display: flex;
    position: relative;
    border: 1px solid var(--grey1);
@@ -6,7 +6,7 @@
    overflow: hidden;
 }
 
-.cardForm img {
+.movieCard img {
    height: 240px;
 }
 
@@ -15,7 +15,7 @@
    flex-direction: column;
    gap: 10px;
    justify-content: center;
-   padding: 16px;
+   padding: 16px 24px;
 }
 
 .title {

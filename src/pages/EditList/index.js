@@ -1,12 +1,9 @@
-import style from "./style.module.css";
 import { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { Header } from "../../components/Header";
 import { SearchBar } from "../../components/SearchBar";
-
-
 
 export function EditList() {
 
@@ -82,9 +79,9 @@ export function EditList() {
       <>
          <Header headerType="default" headerTitle="Editar lista" />
 
-         <main className="main">
-            <div className={style.container}>
-               <form onSubmit={handleSubmit}>
+         <main className="main main_form">
+            <div className="container">
+               <form className="form" onSubmit={handleSubmit}>
 
                   <h2>Informações da lista</h2>
 

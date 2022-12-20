@@ -1,4 +1,3 @@
-import style from "./style.module.css";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -76,9 +75,9 @@ export function CreateList() {
         headerTitle="Crie sua própria lista de recomendações"
       />
 
-      <main className="main">
-        <div className={style.container}>
-          <form onSubmit={handleSubmit}>
+      <main className="main main_form">
+        <div className="container">
+          <form className="form" onSubmit={handleSubmit}>
             <h2> Informações da lista </h2>
 
             <div className="form-group">

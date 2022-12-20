@@ -15,7 +15,9 @@
 .header .container {
   align-items: center;
   display: flex;
+  flex-direction: column;
   gap: 24px;
+  align-items: flex-start;
 }
 
 .header .col1 {
@@ -47,4 +49,11 @@
 
 .headerDescription {
   font-size: 1.25rem;
+}
+
+@media screen and (min-width: 800px) {
+
+  .header .container {
+    flex-direction: row;
+  }
 }

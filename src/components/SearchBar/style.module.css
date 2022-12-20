@@ -50,10 +50,20 @@
    border-bottom: 1px solid #dddddd;
    display: flex;
    justify-content: space-between;
+   align-items: center;
 }
 
 .dropdownLi:last-child {
    border-bottom: 0;
+}
+
+.liContent {
+   color: var(--grey3);
+}
+
+.liContent strong {
+
+   color: var(--dark);
 }
 
 .cardsDisplay {

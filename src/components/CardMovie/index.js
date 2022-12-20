@@ -4,7 +4,7 @@ export function CardMovie(props) {
    const { image, title, releaseDate, overview, movieId, removeMovie } = props;
 
    return (
-      <article className={style.cardForm}>
+      <article className={style.movieCard}>
          {removeMovie ?
             <button className={`${style.btnRoundDelete} ${style.btn}`} type="button" onClick={() => removeMovie(movieId)}></button>
             : null

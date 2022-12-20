@@ -3,12 +3,16 @@ import { Hero } from "../../components/Hero";
 import { Banner } from "../../components/Banner";
 import style from "./style.module.css";
 import { useEffect, useState } from "react";
+import 'react-loading-skeleton/dist/skeleton.css';
+import { ListCardSkeleton } from "../../components/ListCardSkeleton";
+
 import axios from "axios";
 import michael from "../../images/michael-scott.webp";
 
 
 export function Home() {
 
+  const [isLoading, setIsLoading] = useState(true);
   const [filmes, setFilmes] = useState([]);
 
   useEffect(() => {
@@ -20,13 +24,13 @@ export function Home() {
         );
 
         setFilmes([...response.data]);
+        setIsLoading(false);
 
       } catch (error) { }
     }
 
     fetchFilmes();
   }, []);
-
 
   return (
     <div>
@@ -48,15 +52,16 @@ export function Home() {
 
         <div className={style.cardsContainer}>
 
-          {filmes.map((filme) => (
-            <ListCard
-              key={filme._id}
-              id={filme._id}
-              listTitle={filme.listTitle}
-              autorName={filme.name}
-              img={`https://image.tmdb.org/t/p/w500${filme.listMovies[0].poster_path}`} />
-          ))}
-
+          {isLoading ? <ListCardSkeleton cards={8} /> :
+            filmes.map((filme) => (
+              <ListCard
+                key={filme._id}
+                id={filme._id}
+                listTitle={filme.listTitle}
+                autorName={filme.name}
+                img={`https://image.tmdb.org/t/p/w500${filme.listMovies[0].poster_path}`} />
+            ))
+          }
         </div>
         <Banner title="Crie listas com filmes favoritos e compartilhe!" />
       </div>
