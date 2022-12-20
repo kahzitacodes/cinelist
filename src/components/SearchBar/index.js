@@ -111,21 +111,13 @@ export function SearchBar(props) {
 
                                  {currentElement.isAdd ?
 
-                                    <button
-                                       type="button"
-                                       className={style.btnDropdownDel}
-                                       onClick={() => { removeMovie(currentElement.id); }}
-                                    >
+                                    <button type="button" className={style.btnDropdownDel} onClick={() => { removeMovie(currentElement.id); }}>
                                        Deletar
                                     </button>
 
                                     :
 
-                                    <button
-                                       type="button"
-                                       className={style.btnDropdownAdd}
-                                       onClick={() => { addMovie(currentElement); }}
-                                    >
+                                    <button type="button" className={style.btnDropdownAdd} onClick={() => { addMovie(currentElement); }}>
                                        Adicionar
                                     </button>}
                               </li>
