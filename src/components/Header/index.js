@@ -18,12 +18,12 @@ export function Header(props) {
 
             <h1>{headerTitle || <Skeleton height={32} />}</h1>
 
-            {listDescription ?
+            {headerType === "list" ?
               <p className={style.headerDescription}>{listDescription || <Skeleton height={15} count={2} />}</p>
               : null
             }
 
-            {listAutor ?
+            {headerType === "list" ?
               isLoading ? <Skeleton height={10} width={100} /> : (<p>por {listAutor}</p>)
               : null
             }

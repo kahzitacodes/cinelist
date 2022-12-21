@@ -53,7 +53,7 @@ export function EditList() {
 
       }
       fetchNote();
-   }, []);
+   }, [params.id]);
 
 
    async function handleSubmit(e) {
