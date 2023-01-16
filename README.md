@@ -12,5 +12,5 @@ The app is responsive and adjust for different screens.
 
 ## Links
 
-[Go to Cinelist](https://mycinelist.netlify.app/)
+[Go to Cinelist](https://thecinelist.netlify.app/)
 
