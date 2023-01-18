@@ -70,7 +70,7 @@ export function SearchBar(props) {
          }
       }
       fetchMovies();
-   }, [searchInput]);
+   }, [moviesToDisplay, searchInput]);
 
 
    useEffect(() => {
