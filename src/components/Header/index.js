@@ -27,7 +27,7 @@ export function Header({ listId, headerType, headerTitle, listDescription, listA
             }
 
             {headerType === "list" ?
-              isLoading ? <Skeleton height={10} width={100} /> : (
+              isLoading ? <Skeleton height={10} width={200} /> : (
                 <div className={style.headerInfos}>
                   <span>por {listAutor}</span>
                   <span>·</span>
