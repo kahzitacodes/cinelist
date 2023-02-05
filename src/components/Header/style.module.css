@@ -43,11 +43,16 @@
   background: url("../../images/arrow-left.svg");
 }
 
-.header p {
-  color: var(--light);
+.headerInfos {
+  display: flex;
+  gap: 15px;
+}
+.headerInfos span {
+  color: var(--grey3);
 }
 
 .headerDescription {
+  color: var(--light);
   font-size: 1.25rem;
 }
 

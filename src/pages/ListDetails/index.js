@@ -78,6 +78,7 @@ export function ListDetails() {
         listAutor={list.author}
         headerTitle={list.listTitle}
         listDescription={list.listDescription}
+        listDate={list.createdAt}
         listId={list._id}
       />
       <div className={`container ${style.container}`}>

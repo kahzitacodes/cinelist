@@ -4,8 +4,11 @@ import { ButtonIcon } from "../ButtonIcon";
 import iconPencil from "../../images/edit.svg";
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 
-export function Header(props) {
-  const { listId, headerType, headerTitle, listDescription, listAutor, btnFunction, isLoading } = props;
+export function Header({ listId, headerType, headerTitle, listDescription, listAutor, listDate, btnFunction, isLoading }) {
+
+  const meses = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"];
+  let data = new Date(listDate);
+  let dataFormatada = ((data.getDate() + " " + meses[(data.getMonth())] + " " + data.getFullYear()));
 
   return (
     <SkeletonTheme baseColor="#202020" highlightColor="#444">
@@ -24,7 +27,14 @@ export function Header(props) {
             }
 
             {headerType === "list" ?
-              isLoading ? <Skeleton height={10} width={100} /> : (<p>por {listAutor}</p>)
+              isLoading ? <Skeleton height={10} width={100} /> : (
+                <div className={style.headerInfos}>
+                  <span>por {listAutor}</span>
+                  <span>·</span>
+                  <span>{dataFormatada}</span>
+                </div>
+
+              )
               : null
             }
           </div>
