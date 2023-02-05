@@ -1,15 +1,15 @@
+import 'react-loading-skeleton/dist/skeleton.css';
 import style from "./style.module.css";
+import { api } from "../../services/api";
 import { Header } from "../../components/Header";
 import { CardMovie } from "../../components/CardMovie";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { CardMovieSkeleton } from "../../components/CardMovieSkeleton";
 import { ButtonIcon } from "../../components/ButtonIcon";
-import axios from "axios";
 import iconPencil from "../../images/edit-2.svg";
 import iconTrash from '../../images/trash-2.svg';
 import toast from "react-hot-toast";
-import 'react-loading-skeleton/dist/skeleton.css';
-import { CardMovieSkeleton } from "../../components/CardMovieSkeleton";
 
 export function ListDetails() {
   const [list, setList] = useState({});
@@ -21,11 +21,10 @@ export function ListDetails() {
   useEffect(() => {
     async function fetchFilmes() {
       try {
-        const response = await axios.get(
-          `https://ironrest.cyclic.app/CineList/${params.id}`
-        );
 
-        setList(response.data);
+        const response = await api.get(`/lists/${params.id}`);
+        setList(response.data[0]);
+
         setIsLoading(false);
       } catch (error) {
         console.log(error);
@@ -33,13 +32,11 @@ export function ListDetails() {
     }
 
     fetchFilmes();
-  }, []);
-
-  console.log(list);
+  }, [params.id]);
 
   async function deleteList(id, toastId) {
     try {
-      await axios.delete(`https://ironrest.cyclic.app/CineList/${id}`);
+      await api.delete(`/lists/${id}`);
       toast.dismiss(toastId);
       toast.success('Lista deletada com sucesso!');
       navigate('/');
@@ -73,23 +70,21 @@ export function ListDetails() {
 
   }
 
-  const filmes = list.listMovies;
-
   return (
     <div>
       <Header
-        isLoading={isLoading}
-        headerTitle={list.listTitle}
-        listAutor={list.name}
-        listDescription={list.listDescription}
         headerType={"list"}
+        isLoading={isLoading}
+        listAutor={list.author}
+        headerTitle={list.list_title}
+        listDescription={list.list_description}
         listId={list._id}
       />
       <div className={`container ${style.container}`}>
 
         {isLoading ? <CardMovieSkeleton cards={8} /> :
 
-          filmes.map((currentMovie) => {
+          list.list_movies && list.list_movies.map((currentMovie) => {
             return (
               <CardMovie
                 key={currentMovie.id}

@@ -1,6 +1,6 @@
+import { api } from "../../services/api";
 import { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import axios from "axios";
 import toast from "react-hot-toast";
 import { Header } from "../../components/Header";
 import { SearchBar } from "../../components/SearchBar";
@@ -10,10 +10,10 @@ export function EditList() {
    const navigate = useNavigate();
 
    const [form, setForm] = useState({
-      name: "",
-      listTitle: "",
-      listDescription: "",
-      listMovies: [],
+      author: "",
+      list_title: "",
+      list_description: "",
+      list_movies: [],
    });
 
 
@@ -24,15 +24,15 @@ export function EditList() {
 
    const addMovie = (movie) => {
       delete movie.isAdd;
-      setForm({ ...form, listMovies: [...form.listMovies, movie] });
+      setForm({ ...form, list_movies: [...form.list_movies, movie] });
    };
 
 
    const removeMovie = (movieId) => {
-      const filteredMovies = form.listMovies.filter(
+      const filteredMovies = form.list_movies.filter(
          (currentElement) => currentElement.id !== movieId
       );
-      setForm({ ...form, listMovies: [...filteredMovies] });
+      setForm({ ...form, list_movies: [...filteredMovies] });
    };
 
 
@@ -40,21 +40,20 @@ export function EditList() {
 
 
    useEffect(() => {
-      async function fetchNote() {
+      async function fetchList() {
          try {
 
-            const response = await axios.get(`https://ironrest.cyclic.app/CineList/${params.id}`);
+            const response = await api.get(`/lists/${params.id}`);
 
-            setForm(response.data);
+            setForm(response.data[0]);
 
          } catch (err) {
             console.log(err);
          }
 
       }
-      fetchNote();
+      fetchList();
    }, [params.id]);
-
 
    async function handleSubmit(e) {
 
@@ -64,7 +63,9 @@ export function EditList() {
          const infosToSendForAPI = { ...form };
 
          delete infosToSendForAPI._id;
-         await axios.put(`https://ironrest.cyclic.app/CineList/${params.id}`, infosToSendForAPI);
+         await api.put(`/lists/${params.id}`, infosToSendForAPI);
+
+         toast.success("Suas alterações foram salvas!");
          navigate("/");
 
       }
@@ -93,8 +94,8 @@ export function EditList() {
                            className="form-item"
                            id="input-name"
                            type="text"
-                           name="name"
-                           value={form.name}
+                           name="author"
+                           value={form.author}
                            onChange={handleChange}
                         />
                      </div>
@@ -105,8 +106,8 @@ export function EditList() {
                            className="form-item"
                            id="input-list-title"
                            type="text"
-                           name="listTitle"
-                           value={form.listTitle}
+                           name="list_title"
+                           value={form.list_title}
                            onChange={handleChange}
                         />
                      </div>
@@ -118,8 +119,8 @@ export function EditList() {
                            rows="4"
                            id="input-list-description"
                            type="text"
-                           name="listDescription"
-                           value={form.listDescription}
+                           name="list_description"
+                           value={form.list_description}
                            onChange={handleChange}
                         ></textarea>
                      </div>
@@ -128,13 +129,13 @@ export function EditList() {
                   <SearchBar
                      addMovieAction={addMovie}
                      removeMovieAction={removeMovie}
-                     moviesToDisplay={form.listMovies}
+                     moviesToDisplay={form.list_movies}
                      documentId={params.id}
                   />
 
                   <div className="form-actions">
                      <Link to="/">Cancelar</Link>
-                     <button className="btn btn-lg btn-primary">Editar lista</button>
+                     <button className="btn btn-lg btn-primary">Salvar alterações</button>
                   </div>
 
                </form>

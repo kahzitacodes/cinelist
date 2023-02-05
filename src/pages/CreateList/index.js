@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import { api } from "../../services/api";
 import toast from "react-hot-toast";
 import { Header } from "../../components/Header";
 import { SearchBar } from "../../components/SearchBar";
@@ -8,14 +8,12 @@ import { SearchBar } from "../../components/SearchBar";
 export function CreateList() {
 
   const navigate = useNavigate();
-  const urlAPI = "https://ironrest.cyclic.app/CineList";
-
 
   const [form, setForm] = useState({
-    name: "",
-    listTitle: "",
-    listDescription: "",
-    listMovies: [],
+    author: "",
+    list_title: "",
+    list_description: "",
+    list_movies: [],
   });
 
 
@@ -26,15 +24,15 @@ export function CreateList() {
 
   const addMovie = (movie) => {
     delete movie.isAdd;
-    setForm({ ...form, listMovies: [...form.listMovies, movie] });
+    setForm({ ...form, list_movies: [...form.list_movies, movie] });
   };
 
 
   const removeMovie = (movieId) => {
-    const filteredMovies = form.listMovies.filter(
+    const filteredMovies = form.list_movies.filter(
       (currentElement) => currentElement.id !== movieId
     );
-    setForm({ ...form, listMovies: [...filteredMovies] });
+    setForm({ ...form, list_movies: [...filteredMovies] });
   };
 
 
@@ -42,7 +40,7 @@ export function CreateList() {
     e.preventDefault();
 
     try {
-      if (form.listMovies.length === 0) {
+      if (form.list_movies.length === 0) {
         toast((t) => (
           <div className="toast-content">
             <span>Adicione um filme na sua lista!</span>
@@ -56,11 +54,10 @@ export function CreateList() {
         ));
         return;
       }
-      const response = await axios.post(urlAPI, form);
+      await api.post("/lists", form);
       toast.success("Sua lista foi criada com sucesso!");
 
       navigate("/");
-      console.log("response: " + response);
     } catch (error) {
       toast.error("Ops, algo deu errado!");
       console.log(error);
@@ -88,7 +85,7 @@ export function CreateList() {
                   className="form-item"
                   id="input-name"
                   type="text"
-                  name="name"
+                  name="author"
                   onChange={handleChange}
                 />
               </div>
@@ -99,7 +96,7 @@ export function CreateList() {
                   className="form-item"
                   id="input-list-title"
                   type="text"
-                  name="listTitle"
+                  name="list_title"
                   onChange={handleChange}
                 />
               </div>
@@ -113,7 +110,7 @@ export function CreateList() {
                   rows="4"
                   id="input-list-description"
                   type="text"
-                  name="listDescription"
+                  name="list_description"
                   onChange={handleChange}
                 ></textarea>
               </div>
@@ -122,7 +119,7 @@ export function CreateList() {
             <SearchBar
               addMovieAction={addMovie}
               removeMovieAction={removeMovie}
-              moviesToDisplay={form.listMovies}
+              moviesToDisplay={form.list_movies}
             />
 
             <div className="form-actions">

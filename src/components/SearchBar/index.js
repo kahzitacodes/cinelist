@@ -30,12 +30,10 @@ export function SearchBar(props) {
 
    const addMovie = (movie) => {
       addMovieAction(movie);
-      setOpen(false);
    };
 
    const removeMovie = (movieId) => {
       removeMovieAction(movieId);
-      setOpen(false);
    };
 
    const clearSearchbar = (e) => {
@@ -80,7 +78,6 @@ export function SearchBar(props) {
       }
       else {
          setShowClearButton(false);
-         setOpen(false);
       }
    }, [searchInput]);
 
@@ -110,7 +107,6 @@ export function SearchBar(props) {
 
                      <ul className={style.dropdownUl}>
                         {movies.map((currentElement) => {
-                           console.log(currentElement.isAdd);
                            return (
                               <li className={style.dropdownLi} key={currentElement.id}>
                                  <span className={style.liContent}><strong>{currentElement.title}</strong> ({new Date(currentElement.release_date).getFullYear()})</span>
@@ -135,7 +131,7 @@ export function SearchBar(props) {
 
 
             <div className={style.cardsDisplay}>
-               {moviesToDisplay.map((addedMovie) => {
+               {moviesToDisplay && moviesToDisplay.map((addedMovie) => {
                   return (
                      <CardMovie
                         key={addedMovie.id}
