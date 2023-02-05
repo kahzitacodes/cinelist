@@ -8,12 +8,14 @@ export function ListCard(props) {
         <img className={style.cardImg} src={props.img} alt="foto" />
       </Link>
 
-      <Link to={`/${props.id}`}>
-        <h2 className={style.cardTitle}>{props.listTitle}</h2>
-      </Link>
+      <div className={style.cardDetails}>
 
-      <p className={style.cardDetails}>Por {props.autorName}</p>
+        <Link to={`/${props.id}`}>
+          <h2 className={style.cardTitle}>{props.listTitle}</h2>
+        </Link>
 
+        <span>Por {props.autorName}</span>
+      </div>
     </div>
   );
 }
