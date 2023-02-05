@@ -11,9 +11,9 @@ export function CreateList() {
 
   const [form, setForm] = useState({
     author: "",
-    list_title: "",
-    list_description: "",
-    list_movies: [],
+    listTitle: "",
+    listDescription: "",
+    listMovies: [],
   });
 
 
@@ -24,15 +24,15 @@ export function CreateList() {
 
   const addMovie = (movie) => {
     delete movie.isAdd;
-    setForm({ ...form, list_movies: [...form.list_movies, movie] });
+    setForm({ ...form, listMovies: [...form.listMovies, movie] });
   };
 
 
   const removeMovie = (movieId) => {
-    const filteredMovies = form.list_movies.filter(
+    const filteredMovies = form.listMovies.filter(
       (currentElement) => currentElement.id !== movieId
     );
-    setForm({ ...form, list_movies: [...filteredMovies] });
+    setForm({ ...form, listMovies: [...filteredMovies] });
   };
 
 
@@ -40,7 +40,7 @@ export function CreateList() {
     e.preventDefault();
 
     try {
-      if (form.list_movies.length === 0) {
+      if (form.listMovies.length === 0) {
         toast((t) => (
           <div className="toast-content">
             <span>Adicione um filme na sua lista!</span>
@@ -96,7 +96,7 @@ export function CreateList() {
                   className="form-item"
                   id="input-list-title"
                   type="text"
-                  name="list_title"
+                  name="listTitle"
                   onChange={handleChange}
                 />
               </div>
@@ -110,7 +110,7 @@ export function CreateList() {
                   rows="4"
                   id="input-list-description"
                   type="text"
-                  name="list_description"
+                  name="listDescription"
                   onChange={handleChange}
                 ></textarea>
               </div>
@@ -119,7 +119,7 @@ export function CreateList() {
             <SearchBar
               addMovieAction={addMovie}
               removeMovieAction={removeMovie}
-              moviesToDisplay={form.list_movies}
+              moviesToDisplay={form.listMovies}
             />
 
             <div className="form-actions">

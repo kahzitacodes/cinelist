@@ -76,15 +76,15 @@ export function ListDetails() {
         headerType={"list"}
         isLoading={isLoading}
         listAutor={list.author}
-        headerTitle={list.list_title}
-        listDescription={list.list_description}
+        headerTitle={list.listTitle}
+        listDescription={list.listDescription}
         listId={list._id}
       />
       <div className={`container ${style.container}`}>
 
         {isLoading ? <CardMovieSkeleton cards={8} /> :
 
-          list.list_movies && list.list_movies.map((currentMovie) => {
+          list.listMovies && list.listMovies.map((currentMovie) => {
             return (
               <CardMovie
                 key={currentMovie.id}

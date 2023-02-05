@@ -11,9 +11,9 @@ export function EditList() {
 
    const [form, setForm] = useState({
       author: "",
-      list_title: "",
-      list_description: "",
-      list_movies: [],
+      listTitle: "",
+      listDescription: "",
+      listMovies: [],
    });
 
 
@@ -24,15 +24,15 @@ export function EditList() {
 
    const addMovie = (movie) => {
       delete movie.isAdd;
-      setForm({ ...form, list_movies: [...form.list_movies, movie] });
+      setForm({ ...form, listMovies: [...form.listMovies, movie] });
    };
 
 
    const removeMovie = (movieId) => {
-      const filteredMovies = form.list_movies.filter(
+      const filteredMovies = form.listMovies.filter(
          (currentElement) => currentElement.id !== movieId
       );
-      setForm({ ...form, list_movies: [...filteredMovies] });
+      setForm({ ...form, listMovies: [...filteredMovies] });
    };
 
 
@@ -106,8 +106,8 @@ export function EditList() {
                            className="form-item"
                            id="input-list-title"
                            type="text"
-                           name="list_title"
-                           value={form.list_title}
+                           name="listTitle"
+                           value={form.listTitle}
                            onChange={handleChange}
                         />
                      </div>
@@ -119,8 +119,8 @@ export function EditList() {
                            rows="4"
                            id="input-list-description"
                            type="text"
-                           name="list_description"
-                           value={form.list_description}
+                           name="listDescription"
+                           value={form.listDescription}
                            onChange={handleChange}
                         ></textarea>
                      </div>
@@ -129,7 +129,7 @@ export function EditList() {
                   <SearchBar
                      addMovieAction={addMovie}
                      removeMovieAction={removeMovie}
-                     moviesToDisplay={form.list_movies}
+                     moviesToDisplay={form.listMovies}
                      documentId={params.id}
                   />
 
