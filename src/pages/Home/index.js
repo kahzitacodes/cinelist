@@ -42,7 +42,13 @@ export function Home() {
 
         <h2 className={style.sectionTitle}>Confira estas recomendações! </h2>
 
-        {isLoading ? <ListCardSkeleton cards={8} /> :
+        {isLoading ? (
+
+          <div className={style.cardsContainer}>
+            <ListCardSkeleton cards={8} />
+          </div>
+
+        ) :
 
           filmes.length === 0 ? (
             <div className={style.emptyLit}>
