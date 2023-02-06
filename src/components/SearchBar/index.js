@@ -3,33 +3,37 @@ import axios from "axios";
 import style from "./style.module.css";
 import { CardMovie } from "../CardMovie";
 import iconClose from "../../images/close.svg";
+//import { useOutsideClick } from "../../useOutsideClick";
 import { useOutsideClick } from "../../useOutsideClick";
 
 export function SearchBar(props) {
 
+
    const { addMovieAction, removeMovieAction, moviesToDisplay } = props;
    const apiKey = "24e1069de660c324728bbf37a36d24bd";
 
-
    const ref = useRef(null);
+   const wrapperRef = useRef(null);
    const [searchInput, setSearchInput] = useState("");
    const [movies, setMovies] = useState([]);
    const [open, setOpen] = useState(false);
    const [showClearButton, setShowClearButton] = useState(false);
 
-
-   const handleOutsideClick = () => {
-      setOpen(false);
+   const handleClick = (e) => {
+      if (searchInput !== "") {
+         setSearchInput(e.target.value);
+         setOpen(true);
+      }
    };
-
-   const clickRef = useOutsideClick(handleOutsideClick);
 
    const handleSearch = (e) => {
       setSearchInput(e.target.value);
+      setOpen(true);
    };
 
    const addMovie = (movie) => {
       addMovieAction(movie);
+      setOpen(false);
    };
 
    const removeMovie = (movieId) => {
@@ -40,8 +44,8 @@ export function SearchBar(props) {
       e.preventDefault();
       ref.current.value = '';
       setSearchInput("");
+      setOpen(false);
    };
-
 
    useEffect(() => {
       async function fetchMovies() {
@@ -71,6 +75,12 @@ export function SearchBar(props) {
    }, [moviesToDisplay, searchInput]);
 
 
+   const handleOutsideClick = () => {
+      setOpen(false);
+   };
+
+   useOutsideClick(wrapperRef, handleOutsideClick);
+
    useEffect(() => {
       if (searchInput !== "") {
          setOpen(true);
@@ -78,6 +88,7 @@ export function SearchBar(props) {
       }
       else {
          setShowClearButton(false);
+         setOpen(false);
       }
    }, [searchInput]);
 
@@ -85,7 +96,7 @@ export function SearchBar(props) {
    return (
       <>
          <h2> Selecione os títulos da lista </h2>
-         <div className={`form-control ${style.searchbar}`}>
+         <div className={`form-control ${style.searchbar}`} ref={wrapperRef}>
             <label htmlFor="input-search">Busque por algum título</label>
             <input
                ref={ref}
@@ -95,6 +106,7 @@ export function SearchBar(props) {
                name="search"
                onChange={handleSearch}
                placeholder="ex: senhor dos anéis"
+               onClick={handleClick}
             />
             <button onClick={clearSearchbar} className={`${style.searchbarReset} ${showClearButton ? style.show : style.hide}`} >
                <img src={iconClose} alt="limpar busca" />
@@ -103,9 +115,10 @@ export function SearchBar(props) {
 
             {!open ? null :
                (
-                  <div className={style.dropdown} ref={clickRef} >
+                  <div className={style.dropdown}  >
 
                      <ul className={style.dropdownUl}>
+                        {movies.length === 0 ? "Nenhum filme encontrado" : null}
                         {movies.map((currentElement) => {
                            return (
                               <li className={style.dropdownLi} key={currentElement.id}>
